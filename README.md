@@ -46,7 +46,7 @@ Tendo isso em vista, a conversão entre CEP e CRP seria simples e facilmente rev
 
 A única excessão à regra do "nome do estado no prefixo" seria São Paulo, que tem uma conjunto de CEPs só para a zona metropolitana ("01000-000" a "09999-999"), o qual poderia ser batizado de "ZM".
 
-A tabela completa, baseada na [lista geral dos CEPs](https://en.wikipedia.org/wiki/List_of_postal_codes_in_Brazil#Eight-digit_form), está em [CEP-to-CRP.csv](data/CEP-to-CRP.csv).
+A tabela completa, baseada na [lista geral dos CEPs](https://en.wikipedia.org/wiki/List_of_postal_codes_in_Brazil#Eight-digit_form), está em **[CEP-to-CRP.csv](data/CEP-to-CRP.csv)**, e define a rigor todos os detalhes da conversão entre *strings* de CEP e CRP.  O script PHP [convert.php](convert.php) exemplifica a implementação da conversão através de algoritmos simples.
 
 
 
