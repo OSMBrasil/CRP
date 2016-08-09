@@ -5,7 +5,7 @@ Código de Roteamento Postal
 
 Os [algoritmos de mapeamento baseados em *faces de quadra*](https://en.wikipedia.org/wiki/Postal_code#Codes_defined_independently_from_administrative_borders) são relativamente simples (podem ser implementados por ex. com PostGIS) e, com a  disponibilização os [dados públicos de face de quadra pelo IBGE em 2016](https://lists.openstreetmap.org/pipermail/talk-br/2016-July/011502.html), tornaram-se viáveis. 
 
-Os códigos de CEP de 5 dígitos (`CEP5`) são de domínio público, como qualquer outra norma do governo brasileiro. Os códigos de 8 dígitos (`CEP8`) também deveriam ser.
+Os códigos de CEP de 5 dígitos (`CEP5`) são de domínio público, como qualquer outra norma técnica citada por lei no sistema legislativo brasileiro. Os códigos de 8 dígitos (`CEP8`) também deveriam ser.
 
 Em anos recentes a entidade encarregada do controle dos códigos de CEP, a "Empresa brasileira de Correios e Telégrafos - ECT", reclamou direitos autrais sobre a marca e o banco de dados oficial do CEP, [apesar de serem direitos adquiridos em 1978 e tornados inconstitucionais a partir de 1988](http://pt.stackoverflow.com/q/54539/4186). Uma negociação com os Correios, ou uma eventual contestação jurídica, estão em curso, mas é um processo incerto e moroso.
 
