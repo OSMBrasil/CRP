@@ -3,7 +3,7 @@ Código de Roteamento Postal
 
 -----
 
-Projeto para retomada do [Mapa-do-CEP](http://wiki.okfn.org/Open_Knowledge_Brasil/Mapa-do-CEP) com a [comunidade OSM](https://github.com/OSMBrasil). Os [algoritmos de mapeamento baseados em *faces de quadra*](https://en.wikipedia.org/wiki/Postal_code#Codes_defined_independently_from_administrative_borders) são relativamente simples (podem ser implementados por ex. com PostGIS) e, com a  disponibilização os dados públicos de face de quadra pelo IBGE em 2016, tornaram-se viáveis. 
+Os [algoritmos de mapeamento baseados em *faces de quadra*](https://en.wikipedia.org/wiki/Postal_code#Codes_defined_independently_from_administrative_borders) são relativamente simples (podem ser implementados por ex. com PostGIS) e, com a  disponibilização os [dados públicos de face de quadra pelo IBGE em 2016](https://lists.openstreetmap.org/pipermail/talk-br/2016-July/011502.html), tornaram-se viáveis. 
 
 Os códigos de CEP de 5 dígitos (`CEP5`) são de domínio público, como qualquer outra norma do governo brasileiro. Os códigos de 8 dígitos (`CEP8`) também deveriam ser.
 
