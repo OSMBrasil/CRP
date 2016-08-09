@@ -15,7 +15,7 @@ As principais aplicações do CEP nos dias de hoje (2016) estão vinculadas às 
 <small>PS: a ideia de "roteamento" no lugar de "endereçamento" ajuda inclusive a evitar confusão com termos como "endereço do lote" e "ponto de endereçamento" -- o lote ou seu centroide pode ter mais de um CEP, ou seja, o lote pode ter mais de um portão para receber entregas.</small>
 
 ## String alternativa ao CEP
-A representação do CEP não precisa ser um inteiro único para o Brasil, podem ser inteiros com unicidade garantida por unidade da federação (UF), ou seja, em uma [base SQL](https://en.wikipedia.org/wiki/SQL) temos cada string de CEP representada pela UF e um contador dentro da UF, ou seja, `UNIQUE(uf,CRP)`. Podemos convencionar que a string alternativa é então algo como o código da UF concatenado ao código inteiro com os últimos três dígitos destacados. Por exemplo "SP12345-678".
+A representação do CEP não precisa ser um inteiro único para o Brasil, podem ser inteiros com unicidade garantida por unidade da federação (UF), de modo a termos em uma [base SQL](https://en.wikipedia.org/wiki/SQL) cada string de CEP representada pela UF e um codigo dentro da UF, ou seja, com a unicidade garantida por `UNIQUE(uf,codigo)`. Podemos convencionar que a string alternativa é então algo como o código da UF concatenado ao código restante do CEP. Por exemplo "SP12345-678".
 
 Como na base de dados é mais econômico representar uma sequência de dígitos na forma de inteiro (uma [máscara simples de `printf`](https://en.wikipedia.org/wiki/Printf_format_string) converte de volta na string padrão), uma tabela SQL de *códigos CRP* pode ser expressa como tabela PostgreSQL como por exemplo,
 
