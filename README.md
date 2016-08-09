@@ -3,13 +3,18 @@ Código de Roteamento Postal
 
 -----
 
-Projeto para retomada do [Mapa-do-CEP](http://wiki.okfn.org/Open_Knowledge_Brasil/Mapa-do-CEP) com a [comunidade OSM](https://github.com/OSMBrasil).
+Projeto para retomada do [Mapa-do-CEP](http://wiki.okfn.org/Open_Knowledge_Brasil/Mapa-do-CEP) com a [comunidade OSM](https://github.com/OSMBrasil). Os [algoritmos de mapeamento baseados em *faces de quadra*](https://en.wikipedia.org/wiki/Postal_code#Codes_defined_independently_from_administrative_borders) são relativamente simples (podem ser implementados por ex. com PostGIS) e, com a  disponibilização os dados públicos de face de quadra pelo IBGE em 2016, tornaram-se viáveis. 
 
 Os códigos de CEP de 5 dígitos (`CEP5`) são de domínio público, como qualquer outra norma do governo brasileiro. Os códigos de 8 dígitos (`CEP8`) também deveriam ser.
 
-Recentemente a empresa encarregada do controle dos códigos de CEP, a "Empresa brasileira de Correios e Telégrafos - ECT", reclamou direitos autrais sobre a marca e o banco de dados oficial do CEP, [apesar de inconstitucionais](http://pt.stackoverflow.com/q/54539/4186). O cidadão e as empresas brasileiras teem direito de uso do CEP como dado aberto por ser o CEP uma norma requisitada por Lei, e portanto, automaticamente, uma obriagação do Estado a sua publicidade e expressão em domínio público, tal como os nomes de rua. O CEP é como qualquer outra tabela anexa a uma Lei, e "dono do CEP" é a Câmara Municipal ("dona" dos nomes de rua e [autoridade das "leis de batismo"](http://www.lexml.gov.br/busca/search?keyword=denomina+via&f1-tipoDocumento=Legisla%C3%A7%C3%A3o)), que apenas delega o "batismo de CEP" aos Correios.
+Em anos recentes a entidade encarregada do controle dos códigos de CEP, a "Empresa brasileira de Correios e Telégrafos - ECT", reclamou direitos autrais sobre a marca e o banco de dados oficial do CEP, [apesar de serem direitos adquiridos em 1978 e tornados inconstitucionais a partir de 1988](http://pt.stackoverflow.com/q/54539/4186). Uma negociação com os Correios, ou uma eventual contestação jurídica, estão em curso, mas é um processo incerto e moroso.
 
-Para contornar esse problema, basta não utilizar o nome "CEP" e não reproduzir exatamente a string do `CEP8`. O presente projeto é uma proposta de padronização simples para que a comunidade OSM possa trabalhar mais a vontade com os dados do CEP.
+O cidadão e as empresas brasileiras teem direito de uso do CEP como dado aberto por ser o CEP uma norma requisitada por Lei, e portanto, automaticamente, uma obriagação do Estado a sua publicidade e expressão em domínio público, tal como os nomes de rua. O CEP é como qualquer outra tabela anexa a uma Lei, e "dono do CEP" é a Câmara Municipal ("dona" dos nomes de rua e [autoridade das "leis de batismo"](http://www.lexml.gov.br/busca/search?keyword=denomina+via&f1-tipoDocumento=Legisla%C3%A7%C3%A3o)), que apenas delega o "batismo de CEP" aos Correios.
+
+Para contornar esse problema, 
+> basta não utilizar o nome "CEP" e não reproduzir exatamente a string do `CEP8`. 
+
+O presente projeto é uma proposta de padronização simples para que a comunidade OSM possa trabalhar mais a vontade com os dados do CEP.
  
 ## Nome alternativo ao CEP
 
