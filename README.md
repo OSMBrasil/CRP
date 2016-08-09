@@ -1,6 +1,8 @@
 # CRP
 Código de Roteamento Postal
 
+-----
+
 Projeto para retomada do [Mapa-do-CEP](http://wiki.okfn.org/Open_Knowledge_Brasil/Mapa-do-CEP) com a [comunidade OSM](https://github.com/OSMBrasil).
 
 Os códigos de CEP de 5 dígitos (`CEP5`) são de domínio público, como qualquer outra norma do governo brasileiro. Os códigos de 8 dígitos (`CEP8`) também deveriam ser.
@@ -12,7 +14,7 @@ Para contornar esse problema, basta não utilizar o nome "CEP" e não reproduzir
 ## Nome alternativo ao CEP
 
 As principais aplicações do CEP nos dias de hoje (2016) estão vinculadas às finalidades lojísticas. Neste sentido o termo "roteamento" (empregado por exemplo na Alemanha e na Suíça) pode ser adotado no lugar de "endereçamento". Este é o nexo para a sugestão do  nome alternativo **`CRP`**, abreviação de **Código de Roteamento Postal**.
-<small>PS: a ideia de "roteamento" no lugar de "endereçamento" ajuda inclusive a evitar confusão com termos como "endereço do lote" e "ponto de endereçamento" -- o lote ou seu centroide pode ter mais de um CEP, ou seja, o lote pode ter mais de um portão para receber entregas.</small>
+<br/><small>NOTA: a ideia de "roteamento" no lugar de "endereçamento" ajuda inclusive a evitar confusão com termos como "endereço do lote" e "ponto de endereçamento" &mdash; o lote ou seu centroide pode ter mais de um CEP, ou seja, o lote pode ter mais de um portão para receber entregas.</small>
 
 ## String alternativa ao CEP
 A representação do CEP não precisa ser um inteiro único para o Brasil, podem ser inteiros com unicidade garantida por unidade da federação (UF), de modo a termos em uma [base SQL](https://en.wikipedia.org/wiki/SQL) cada string de CEP representada pela UF e um codigo dentro da UF, ou seja, com a unicidade garantida por `UNIQUE(uf,codigo)`. Podemos convencionar que a string alternativa é então algo como o código da UF concatenado ao código restante do CEP. Por exemplo "SP12345-678".
