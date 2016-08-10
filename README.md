@@ -1,5 +1,4 @@
-# CRP
-Código de Roteamento Postal
+# CRP - *C*ódigo de *R*oteamento *P*ostal
 
 -----
 
