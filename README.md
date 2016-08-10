@@ -1,6 +1,5 @@
 # CRP - *C*ódigo de *R*oteamento *P*ostal
 
------
 
 Os [algoritmos de mapeamento baseados em *faces de quadra*](https://en.wikipedia.org/wiki/Postal_code#Codes_defined_independently_from_administrative_borders) são relativamente simples e, com a  disponibilização dos [dados públicos de face de quadra pelo IBGE em 2016](https://lists.openstreetmap.org/pipermail/talk-br/2016-July/011502.html), tornaram-se viáveis.
 
