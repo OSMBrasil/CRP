@@ -1,11 +1,11 @@
 # CRP - *C*ódigo de *R*oteamento *P*ostal
 
-
 Os [algoritmos de mapeamento baseados em *faces de quadra*](https://en.wikipedia.org/wiki/Postal_code#Codes_defined_independently_from_administrative_borders) são relativamente simples e, com a  disponibilização dos [dados públicos de face de quadra pelo IBGE em 2016](https://lists.openstreetmap.org/pipermail/talk-br/2016-July/011502.html), tornaram-se viáveis.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/QuadraFaces-CEP.png/230px-QuadraFaces-CEP.png)
 
-Os códigos de CEP de 5 dígitos (`CEP5`) [são de domínio público](https://github.com/ppKrauss/licenses/blob/master/reports/implied-lex-BR-v1.md), como qualquer [outra norma técnica citada por lei](http://www.pessoacomdeficiencia.gov.br/app/normas-da-abnt/termo-de-ajustamento-de-conduta) no sistema legislativo brasileiro. Os códigos de 8 dígitos (`CEP8`) também, por [princípios de coerência legislativa e constitucionalidade](dx.doi.org/10.5281/zenodo.57253), deveriam ser.
+Os códigos de CEP de 5 dígitos (`CEP5`) [são de domínio público](https://github.com/ppKrauss/licenses/blob/master/reports/implied-lex-BR-v1.md), como qualquer [outra norma técnica citada por lei](http://www.pessoacomdeficiencia.gov.br/app/normas-da-abnt/termo-de-ajustamento-de-conduta) no sistema legislativo brasileiro. Os [códigos de 8 dígitos](https://www.correios.com.br/para-voce/precisa-de-ajuda/o-que-e-cep-e-por-que-usa-lo/estrutura-do-cep) (`CEP8`) também, por [princípios de coerência legislativa e constitucionalidade](dx.doi.org/10.5281/zenodo.57253), deveriam ser.
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/QuadraFaces-CEP.png/230px-QuadraFaces-CEP.png)
 
 A ETC (Empresa brasileira de Correios e Telégrafos), [reclamou direitos autorais](http://pt.stackoverflow.com/q/54539/4186) sobre o banco de dados oficial do `CEP8`: uma negociação da OSM com a [nova diretoria da ETC](http://www.osul.com.br/correios-reduzem-salario-da-diretoria/), ou uma [Ação Civil Pública](https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_civil_p%C3%BAblica), podem resolver a situação, mas o encaminhamento coletivo está ainda no inicio, e o processso será certamente moroso.
 
