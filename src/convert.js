@@ -1,107 +1,155 @@
 /**
  * CRP conversions tool kit, Javascript class library. See https://github.com/ppKrauss/CRP
+ * Please review for annotations, https://developers.google.com/closure/compiler/docs/js-for-compiler?csw=1
  */
 
 
-var CRPconvert = function () {
-	this.UF2CEP = {
-		"AC":"69", "AL":"57", "AM":"69", "AP":"68", "BA":"4",  "CE":"6",  "DF":"7",
-		"ES":"29", "GO":"7",  "MA":"65", "MG":"3",  "MS":"79", "MT":"78", "PA":"6",
-		"PB":"58", "PE":"5",  "PI":"64", "PR":"8",  "RJ":"2",  "RN":"59", "RO":"76",
-		"RR":"69", "RS":"9",  "SC":"8",  "SE":"49", "SP":"1",  "TO":"77", "ZM":"0"
-	};
-	this.cep2prefix={}; // UF2CEP's inverse associativity
-	this.crp=null;        	// main register. Format LLDDDD-DDD for internal representation.
-	this.crp_prefix=null; 	// cache for CRP's prefix
-	this.crp_uf=null;    		// cache for CRP's UF
-	this.crp_int=null;   		// cache for CRP's suffix in integer format
-	this.debug=true; // set to false for stop debuging!
-	this.tocep_regex=null;  // private
-	this.tocrp_regex=null;  // private
-
-	this.keys=Object.keys(this.UF2CEP);  // private
-	this.tocep_regex = new RegExp( '^'+this.keys.join('|') , 'i');
-	var vals=[]; var v;
-	for (var k in this.UF2CEP) {
-		v = this.UF2CEP[k];
-		this.cep2prefix[v] = k;
-		vals.push(v);
-	}
-	this.tocrp_regex = new RegExp( '/^\\s*('+ vals.join('|') +')(\d+)\-?(\d{3,3})\\s*$/' );
-	this.crp_regex = /^\s*([A-Z][A-T])(\d{3,4})\-?(\d{3,3})\s*$/i;
-}
-
+function object_flip( trans ) {
+  // ... or use underscorejs.org functions like invert and union
+    var key, tmp_ar = {};
+    for (key in trans) //pure JSON object not need, if (trans.hasOwnProperty(key))
+      tmp_ar[trans[key]] = key;
+    return tmp_ar;
+} // not exist flip... Workarounds: http://stackoverflow.com/a/14810722
 
 
 /**
- * Set $crp accumulator.
+ * CRP conversions tool kit class.
  */
-CRPconvert.prototype.set = function (crp) {
-	var m;
-	if ((m = this.crp_regex.exec(crp)) !== null) {
-		this.crp_prefix = this.crp_uf = m[1].toUpperCase();
-		if (this.crp_uf=='ZM') this.crp_uf='SP';
-		this.crp = this.crp_prefix + m[2] +'-'+ m[3];
-		this.crp_int = parseInt(m[2]+m[3]);
-		return true;
-	} elseif (this.debug)
-		alert("\nERRO em set($crp)\n");
-	return false;
-}
+var CRPconvert = function (x=null) {
 
+  this.prefMain_rgx = /^(699|693|689|69|65|64|79|78|77|76|59|58|57|5|49|4|29|2|9|3|1|0)/;
+  this.prefExtra_rgx= /^(?:(6[0-3])|(6(?:[67][0-9]|8[0-8]))|(7(?:3[0-6]|[0-2][0-7]))|(7(?:2[8-9]|3[7-9]|[45][0-9]|6[0-7]))|(8[0-7])|(8[8-9]))/;
 
-/////////////
-///...
-//  lixo fazendo
-//...
+	this.UF2prefExtra = {"CE":6,"PA":6,"DF":7,"GO":7,"PR":8,"SC":8};
+	this.prefMain2uf = {
+    "699":"AC","693":"RR","689":"AP","69":"AM","65":"MA","64":"PI","79":"MS","78":"MT",
+    "77":"TO","76":"RO","59":"RN","58":"PB","57":"AL","5":"PE","49":"SE","4":"BA","29":"ES",
+    "2":"RJ","9":"RS","3":"MG","1":"SP","0":"ZM"
+  };
+
+  this.debug = true;
+
+  this.UF2prefFull	  = Object.assign( object_flip(this.prefMain2uf), this.UF2prefExtra );
+  //this.prefExtra2UF   = Object.keys(this.UF2prefExtra);
+  this.prefExtra2UF   = new Array();
+  this.prefExtra2pref = new Array();
+  for (var k in this.UF2prefExtra) {
+      this.prefExtra2UF.push(k);  // keys
+      this.prefExtra2pref.push(this.UF2prefExtra[k]); //values
+  }
+//  if (x) this.set(x);
+}; // class CRPconvert constructor
 
 
 /**
-* Set $crp accumulator by CEP string.
-*/
-CRPconvert.prototype.setCEP = function (cep) {
-	if (this.cep2prefix===null) {
-		var vals = this.keys.map(function(v) { return this.UF2CEP[v]; });
-		this.cep2prefix = array_combine($vals,this.keys);
-		this.tocrp_regex = '/^\s*('. join('|',$vals) .')(\d+)\-?(\d{3,3})\s*$/';
+ * Set context by CEP or CRP or prefix.
+ * @return 2 when CEP, 1 when CRP, null for error.
+ */
+CRPconvert.prototype.setContext = function (x) {
+  x = String(x).trim();
+  if ( x.charCodeAt(0) > 40 )  // check it is not a digit
+    return this.setContextByCRP(x);
+  else
+    return 2*this.setContextByCEP(x);
+}
+
+
+/**
+ * Set CRP register by "contexted CRP" (CRP without prefix).
+ * @return 1 when sucess, null for error.
+ */
+CRPconvert.prototype.setPart = function (x) {
+  var m = /^(\d{1,4})-?(\d{3,3})$/.exec(x);
+  if ( m==null )
+		return this.error(1,"valor '"+x+"' incompleto ou inválido como uncontexted CRP.");
+	this.crp_int = parseInt(m[1]+m[2]);
+	this.crp     = this.crp_uf + m[1] +'-'+ m[2];
+	return this;
+}
+
+/**
+ * Set CRP register by full CEP or CRP.
+ * @return 1 when sucess, null for error.
+ */
+CRPconvert.prototype.set = function (x) {
+	var ctx = this.setContext(x); // 2 is CEP
+	if (!ctx) return null;
+	return this.setPart(
+    x.substr( (ctx==2)? strlen(this.crp_pref): 2 )  // removing CEP or CRP prefix
+  );
+}
+
+/**
+ * Reset $crp accumulator and related caches.
+ */
+CRPconvert.prototype.reset = function () {
+ 	this.crp = this.crp_int = this.crp_uf = this.crp_pref = null;
+  return this;
+}
+
+/**
+ * Show $crp accumulator as a CEP string.
+ */
+CRPconvert.prototype.asCEP = function (crp=null,compact=false) {
+  if (crp) {if (!this.setContextByCRP(crp)) return null;}
+  return this.compact(
+    String(this.crp_pref) + this.crp.substr(2),
+    compact
+  );
+}
+
+
+//// PRIVATE METHODS:
+
+/**
+ * get context of a CEP or CEP prefix.
+ */
+CRPconvert.prototype.setContextByCEP = function (cep) {
+		if (!cep)
+		 	return this.error(2,"CEP vazio");
+		this.reset();
+    var m = this.prefExtra_rgx.exec(cep);
+		if ( m!= null ) {
+			var aux = m.length-2;
+			this.crp_uf   = this.prefExtra2UF[aux];
+			this.crp_pref = this.prefExtra2pref[aux];
+		} else if ( (m = this.prefMain_rgx.exec(cep))!= null ) {
+			this.crp_pref = m[0];
+			this.crp_uf   = this.prefMain2uf[this.crp_pref];
+		} else
+			return this.error(3,"CEP '"+cep+"' em intervalo inválido");
+		return 1;
 	}
-	if ( preg_match(this.tocrp_regex,$cep,$m) )
-		if (isset(this.cep2prefix[$m[1]]))
-			return this.set(this.cep2prefix[$m[1]].$m[2].$m[3]);
-	if (this.debug) die("\nERRO em setCEP()\n");
+
+/**
+ * Get context of a CRP or CRP prefix.
+ * @param {crp} String the input
+ */
+ CRPconvert.prototype.setContextByCRP = function (crp) {
+		if (crp.length<2)
+		 	return this.error(4,"CRP vazio");
+		var aux = crp.substr(0,2).toUpperCase();
+		if ( this.UF2prefFull.hasOwnProperty(aux) ) {
+			this.reset();
+			this.crp_uf   = aux;
+			this.crp_pref = this.UF2prefFull[aux];
+			return 1;
+		} else
+			return this.error(5,"CRP '"+crp+"' com prefixo '"+aux+"' desconhecido");
+	}
+
+/**
+ * Compact code (removes '-').
+ */
+CRPconvert.prototype.compact = function (x,flag=false) {
+		return flag? x.replace('-',''): x;
+}
+
+CRPconvert.prototype.error = function (cod,msg='') {
+	if (msg) msg = ": "+msg;
+	if (this.debug)
+		alert("\nERROR-"+cod+msg+"\n");
+	if (this.onerror_reset) this.reset();
 	return null;
-}
-
-/**
-* Show $crp accumulator as a CEP string.
-*/
-CRPconvert.prototype.asCEP = function (crp=null,retNull=false) {
-	$U2C = &this.UF2CEP;
-	return preg_replace_callback(
-		this.tocep_regex,
-		function ($m) use ($retNull,$U2C) {
-			$prefix = strtoupper($m[0]);
-			return isset($U2C[$prefix])? $U2C[$prefix]: ($retNull? null: $crp);
-		},
-		$crp? $crp: this.crp
-	);
-}
-
-/**
-* Show as standard CRP.
-*/
-CRPconvert.prototype.asStd = function (crp=null,retNull=false) {
-	if ($crp!==null) this.set($crp);
-	if (preg_match('/^(.+?)(\d{3,3})$/',this.crp,$m))
-		return $m[1].'-'.$m[2];
-	else
-		return '';
-}
-
-/**
-* Show as compact CRP syntax (without "-").
-*/
-CRPconvert.prototype.asCompact = function (crp=null) {
-	if ($crp!==null) this.set($crp);
-	return this.crp;
 }

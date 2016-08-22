@@ -1,14 +1,20 @@
 <html>
+
 <head>
-	<title>demo</title>
-	<!-- script src="../src/convert.js"></script -->
+	<title>Demo, CRPconvert</title>
+	<script src="../src/convert.js"></script>
 	<script>
-
-
-var x = new CRPconvert();
-alert(x.crp);
-
+	var cc = new CRPconvert('04569-010');
 	</script>
 </head>
+
+<body>
+	<a href="https://github.com/ppKrauss/CRP">Código de Roteamento Postal</a>
+
+	<h2>Conversões CRP to CEP</h2>
+	CRP AL456-011 <script>document.write( cc.set('AL456-011').asCEP() )</script>
+
+	<h2>Conversões CEP to CRP</h2>
+</body>
 
 </html>

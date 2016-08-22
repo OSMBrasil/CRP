@@ -5,6 +5,12 @@
 
 include('src/convert.php');
 
+function assertRocks($x,$msg=''){
+	if ($x) echo "\n-- ASSERT: $msg.";
+	else echo "\n-- assert ERROR at '$msg'.";
+}
+
+
 $f = 'data/CEP-to-CRP.csv';
 $tab = NULL;
 
@@ -17,15 +23,19 @@ $head = array_shift($tab);
 $c = new CRPconvert();
 foreach($tab as $r) {
 	$a = array_combine($head,$r);
-	$from = trim($a['CRP-from']);
-	if ($from) {
-		$c->setAny($from);
-		assertRocks($c->asCEP()==$a['CEP-from'],"CRP(from={$a['CEP-from']})={$c->crp}");
+	$x = trim($a['CRP-from']);
+	if ($x) {
+		$c->set($x);
+		$cep = $c->asCEP();
+		assertRocks($cep==$a['CEP-from'],  "i=$x: CRP({$a['CEP-from']})={$c->crp} =ctx+{$c->crp_int} (CEP1 $cep)");
 
-		$c->setAny($a['CRP-to']);
-		assertRocks($c->asCEP()==$a['CEP-to'],"CRP(to={$a['CEP-to']})={$c->crp}");
+		$x =$a['CEP-to'];
+		$c->set($x);
+		$cep = $c->asCEP();
+		assertRocks($c->asCEP()==$a['CEP-to'], "i=$x: CRP({$a['CEP-to']})={$c->crp} =ctx+{$c->crp_int}  (CEP2 $cep)");
 
-		$c->setAny($a['CEP-from']);
-		assertRocks($c->asCEP()==$a['CEP-from'],"any(CEP {$a['CEP-from']})={$c->crp}");
+		$c->set($a['CEP-from']);
+		assertRocks($c->asCEP()==$a['CEP-from'],"any({$a['CEP-from']})={$c->crp} =ctx+{$c->crp_int}");
+		print "\n";
 	} // if
 } // for
