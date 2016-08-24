@@ -27,7 +27,7 @@ As principais aplicações do CEP nos dias de hoje (2016) estão vinculadas às 
 <small>NOTA: a ideia de "roteamento" no lugar de "endereçamento" ajuda inclusive a evitar confusão com termos como "endereço do lote" e "ponto de endereçamento" &mdash; o lote ou seu centroide pode ter mais de um CEP, ou seja, o lote pode ter mais de um portão para receber entregas.</small>
 
 ## String alternativa ao CEP
-A representação do CEP não precisa ser um inteiro único para o Brasil, podem ser inteiros com unicidade garantida por unidade da federação (UF), de modo a termos em uma [base SQL](https://en.wikipedia.org/wiki/SQL) cada _string_ de CEP representada pela UF e um código dentro da UF, ou seja, com a unicidade garantida por `UNIQUE(uf,codigo)`. Podemos convencionar que a _string_ alternativa é então algo como o código da UF concatenado ao código restante do CEP. Por exemplo "SP12345-678".
+A representação do CEP não precisa ser um inteiro único para o Brasil, podem ser inteiros com unicidade garantida por unidade da federação (UF), de modo a termos em uma [base SQL](https://en.wikipedia.org/wiki/SQL) cada _string_ de CEP representada pela UF e um código dentro da UF, ou seja, com a unicidade garantida por `UNIQUE(uf,codigo)`. Podemos convencionar que a _string_ alternativa é então algo como o código da UF concatenado ao código restante do CEP. Por exemplo "SP2345-678".
 
 Como na base de dados é mais econômico representar uma sequência de dígitos na forma de inteiro (uma [máscara simples de `printf`](https://en.wikipedia.org/wiki/Printf_format_string) converte de volta na _string_ padrão), uma tabela SQL de *códigos CRP* pode ser expressa como tabela PostgreSQL como por exemplo,
 
@@ -61,4 +61,4 @@ O formato CRM acima descrito também pode:
 * ter seu código compactado, reduzido apenas à parte inteira (`CRP_int`), quando o contexto de UF (ou zona metropolitana) for conhecido.
 
 ## Notas sobre o ecosistema de CRPs
-Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a UF (a rigor "subdivisão principal") como prefixo. A codificação em 2 letras dos nomes das subdivisões do país,  por sua vez é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
+Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a UF (a rigor "subdivisão principal") como prefixo. A codificação em uma ou duas letras dos nomes das subdivisões do país,  por sua vez é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
