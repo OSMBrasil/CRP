@@ -21,7 +21,7 @@ var CRPconvert = function (x=null) {
   this.prefMain_rgx = /^(699|693|689|69|65|64|79|78|77|76|59|58|57|5|49|4|29|2|9|3|1|0)/;
   this.prefExtra_rgx= /^(?:(6[0-3])|(6(?:[67][0-9]|8[0-8]))|(7(?:3[0-6]|[0-2][0-7]))|(7(?:2[8-9]|3[7-9]|[45][0-9]|6[0-7]))|(8[0-7])|(8[8-9]))/;
 
-	this.UF2prefExtra = {"CE":6,"PA":6,"DF":7,"GO":7,"PR":8,"SC":8};
+	this.UF2prefExtra = {"CE":"6", "PA":"6", "DF":"7", "GO":"7", "PR":"8", "SC":"8"};
 	this.prefMain2uf = {
     "699":"AC","693":"RR","689":"AP","69":"AM","65":"MA","64":"PI","79":"MS","78":"MT",
     "77":"TO","76":"RO","59":"RN","58":"PB","57":"AL","5":"PE","49":"SE","4":"BA","29":"ES",
@@ -38,7 +38,7 @@ var CRPconvert = function (x=null) {
       this.prefExtra2UF.push(k);  // keys
       this.prefExtra2pref.push(this.UF2prefExtra[k]); //values
   }
-//  if (x) this.set(x);
+  if (x) this.set(x);
 }; // class CRPconvert constructor
 
 
@@ -48,7 +48,7 @@ var CRPconvert = function (x=null) {
  */
 CRPconvert.prototype.setContext = function (x) {
   x = String(x).trim();
-  if ( x.charCodeAt(0) > 40 )  // check it is not a digit
+  if ( x.charCodeAt(0) > 64 )  // check it is not a digit
     return this.setContextByCRP(x);
   else
     return 2*this.setContextByCEP(x);
@@ -68,6 +68,14 @@ CRPconvert.prototype.setPart = function (x) {
 	return this;
 }
 
+CRPconvert.prototype.state = function () {
+  return {
+    crp:this.crp,
+    crp_uf:this.crp_uf, crp_int:this.crp_int, crp_uf_isReal:this.crp_uf_isReal,
+    crp_pref:this.crp_pref
+  };
+}
+
 /**
  * Set CRP register by full CEP or CRP.
  * @return 1 when sucess, null for error.
@@ -76,7 +84,7 @@ CRPconvert.prototype.set = function (x) {
 	var ctx = this.setContext(x); // 2 is CEP
 	if (!ctx) return null;
 	return this.setPart(
-    x.substr( (ctx==2)? strlen(this.crp_pref): 2 )  // removing CEP or CRP prefix
+    x.substr( (ctx==2)? this.crp_pref.length: 2 )  // removing CEP or CRP prefix
   );
 }
 
@@ -84,19 +92,19 @@ CRPconvert.prototype.set = function (x) {
  * Reset $crp accumulator and related caches.
  */
 CRPconvert.prototype.reset = function () {
- 	this.crp = this.crp_int = this.crp_uf = this.crp_pref = null;
+ 	this.crp = this.crp_int = this.crp_uf = this.crp_uf_isReal = this.crp_pref = null;
   return this;
 }
 
 /**
  * Show $crp accumulator as a CEP string.
  */
-CRPconvert.prototype.asCEP = function (crp=null,compact=false) {
-  if (crp) {if (!this.setContextByCRP(crp)) return null;}
-  return this.compact(
+CRPconvert.prototype.asCEP = function (x=null,compact=false) {
+  if (x) {if (this.set(x)==null) return null;}
+  return this.crp? this.compact(
     String(this.crp_pref) + this.crp.substr(2),
     compact
-  );
+  ):  null;
 }
 
 
@@ -112,11 +120,11 @@ CRPconvert.prototype.setContextByCEP = function (cep) {
     var m = this.prefExtra_rgx.exec(cep);
 		if ( m!= null ) {
 			var aux = m.length-2;
-			this.crp_uf   = this.prefExtra2UF[aux];
+			this.setUF( this.prefExtra2UF[aux] );
 			this.crp_pref = this.prefExtra2pref[aux];
 		} else if ( (m = this.prefMain_rgx.exec(cep))!= null ) {
 			this.crp_pref = m[0];
-			this.crp_uf   = this.prefMain2uf[this.crp_pref];
+			this.setUF( this.prefMain2uf[this.crp_pref] );
 		} else
 			return this.error(3,"CEP '"+cep+"' em intervalo inválido");
 		return 1;
@@ -132,12 +140,18 @@ CRPconvert.prototype.setContextByCEP = function (cep) {
 		var aux = crp.substr(0,2).toUpperCase();
 		if ( this.UF2prefFull.hasOwnProperty(aux) ) {
 			this.reset();
-			this.crp_uf   = aux;
+			this.setUF(aux);
 			this.crp_pref = this.UF2prefFull[aux];
 			return 1;
 		} else
 			return this.error(5,"CRP '"+crp+"' com prefixo '"+aux+"' desconhecido");
 	}
+
+/** Atribui UF e flag indicando se é código de UF oficial */
+CRPconvert.prototype.setUF = function (uf) {
+  this.crp_uf = uf;
+  this.crp_uf_isReal = (uf!='ZM'); // true when crp_uf is real.
+}
 
 /**
  * Compact code (removes '-').

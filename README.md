@@ -1,22 +1,15 @@
 # CRP - *C*ódigo de *R*oteamento *P*ostal
 
-Os [algoritmos de mapeamento baseados em *faces de quadra*](https://en.wikipedia.org/wiki/Postal_code#Codes_defined_independently_from_administrative_borders) são relativamente simples e, com a  disponibilização dos [dados públicos de face de quadra pelo IBGE em 2016](https://lists.openstreetmap.org/pipermail/talk-br/2016-July/011502.html), tornaram-se viáveis.
+Os códigos de CEP de 5 dígitos (`CEP5`) **são de domínio público**, como se espera que seja um bem cultural, um complemento aos nomes de cidade e nomes de bairro, presente em mapas e guias públicos, e com seu uso obrigatório em formulários e cadastros exigidos pelo governo desde a década de 1970.
 
+O mesmo já ocorreu, mas não ocorre hoje (2016), com os CEPs de 8 dígidos (`CEP8`), que complementam nomes de rua e identificam trechos e localizações de interesse público. A *Empresa brasileira de Correios e Telégrafos* (ETC), [reclamou direitos autorais](http://pt.stackoverflow.com/q/54539/4186) sobre o banco de dados oficial do `CEP8`. Para resolver a situação, permitindo ao menos publicar abertamente na Internet mapas ou listagens dos códigos de CEP, uma negociação dos representantes da [*OpenStreetMap*](http://www.openstreetmap.org/about)  com a [nova diretoria da ETC](http://www.osul.com.br/correios-reduzem-salario-da-diretoria/), e uma [Ação Civil Pública](https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_civil_p%C3%BAblica) e de insconstitucionalidade,  entraram em andamento... Por ser encaminhamento coletivo e de interesse difuso, processso será certamente moroso (anos).
 
-Os códigos de CEP de 5 dígitos (`CEP5`) [são de domínio público](https://github.com/ppKrauss/licenses/blob/master/reports/implied-lex-BR-v1.md), como qualquer [outra norma técnica citada por lei](http://www.pessoacomdeficiencia.gov.br/app/normas-da-abnt/termo-de-ajustamento-de-conduta) no sistema legislativo brasileiro. Os [códigos de 8 dígitos](https://www.correios.com.br/para-voce/precisa-de-ajuda/o-que-e-cep-e-por-que-usa-lo/estrutura-do-cep) (`CEP8`) também, por [princípios de coerência legislativa e constitucionalidade](dx.doi.org/10.5281/zenodo.57253), deveriam ser.
+Para contornar por hora esse problema, é até simples,
+> basta não utilizar o nome "CEP" e não reproduzir exatamente a *string* do `CEP8` num banco de dados  público.
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/QuadraFaces-CEP.png/230px-QuadraFaces-CEP.png)
+O presente projeto é uma proposta de padronização simples para que o cidadão brasileiro, e as comunidades [OpenStreetMap-Brasil](http://www.openstreetmap.com.br), [Geonames]()  e outras, possam trabalhar mais a vontade com os dados do CEP.
 
-A ETC (Empresa brasileira de Correios e Telégrafos), [reclamou direitos autorais](http://pt.stackoverflow.com/q/54539/4186) sobre o banco de dados oficial do `CEP8`: uma negociação da OSM com a [nova diretoria da ETC](http://www.osul.com.br/correios-reduzem-salario-da-diretoria/), ou uma [Ação Civil Pública](https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_civil_p%C3%BAblica), podem resolver a situação, mas o encaminhamento coletivo está ainda no inicio, e o processso será certamente moroso.
-
-Explicando melhor. O cidadão e as empresas brasileiras têm direito de uso do CEP como [dado aberto](https://en.wikipedia.org/wiki/Open_data) por ser o CEP uma norma requisitada por Lei, e portanto, automaticamente, uma obrigação do Estado a sua publicidade e expressão em domínio público, tal como os nomes de rua. O CEP é como qualquer outra tabela anexa a uma Lei, e o "dono do CEP" é a Câmara Municipal ("dona" dos nomes de rua e [autoridade das "leis de batismo"](http://www.lexml.gov.br/busca/search?keyword=denomina+via&f1-tipoDocumento=Legisla%C3%A7%C3%A3o)), que apenas delega o "batismo de CEP" aos Correios.
-
-Para contornar esse problema,
-> basta não utilizar o nome "CEP" e não reproduzir exatamente a *string* do `CEP8` num banco de dados ou listagem sistemática públicos dos códigos de CEPs.
-
-O presente projeto é uma proposta de padronização simples para que a comunidade OSM possa trabalhar mais a vontade com os dados do CEP.
-
-## Objetivos deste e de projetos vinculados
+# OBJETIVOS
 
 A finalidade do presente projeto é simplesmente **estabelecer uma convenção para transcrever a *string* de CEP em um outro formato** (digamos XCEP), e demonstrar que a convenção é consistente, simples e reversível.
 
@@ -65,3 +58,5 @@ O formato CRM acima descrito também pode:
 
 * ter seu código compactado, reduzido apenas à parte inteira (`CRP_int`), quando o contexto de UF (ou zona metropolitana) for conhecido.
 
+## Notas sobre o ecosistema de CRPs
+Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a UF (a rigor "subdivisão principal") como prefixo. A codificação em 2 letras dos nomes das subdivisões do país,  por sua vez é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
