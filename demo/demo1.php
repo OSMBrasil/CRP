@@ -33,7 +33,7 @@ foreach($tab as $r) {
 					$c->set($a['CRP-from']); $from = $c->crp_int;
 					$c->set($a['CRP-to']);
 					$mid = round( ($c->crp_int+$from)/2 ) + rand(1, 999) - 499;
-					echo "\n .. debug22: {$c->crp_int}+$from ".( round( ($c->crp_int+$from)/2 ));
+					//echo "\n .. debug22: {$c->crp_int}+$from ".( round( ($c->crp_int+$from)/2 ));
 					$c->setPart( $mid ); $input = $c->crp; $out = $c->asCEP();
 				}
 				$sep = $i? "; &nbsp;&nbsp; ": '';
