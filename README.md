@@ -6,10 +6,10 @@ O mesmo já ocorreu, mas não ocorre hoje (2016), com os CEPs de 8 dígidos (`CE
 
 Para resolver a situação, permitindo ao menos publicar abertamente na Internet mapas ou listagens dos códigos de CEP, uma negociação dos representantes da [*OpenStreetMap*](http://www.openstreetmap.org/about)  com a [nova diretoria da ETC](http://www.osul.com.br/correios-reduzem-salario-da-diretoria/), e uma [Ação Civil Pública](https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_civil_p%C3%BAblica) e de insconstitucionalidade,  entraram em andamento... Por ser encaminhamento coletivo e de interesse difuso, processso será certamente moroso (anos).
 
-Para contornar por hora esse problema, é até simples,
+Para contornar o problema, é até simples,  
 > basta não utilizar o nome "CEP" e não reproduzir exatamente a *string* do `CEP8` num banco de dados  público.
 
-O presente projeto é uma proposta de padronização simples para que o cidadão brasileiro, e as comunidades [OpenStreetMap-Brasil](http://www.openstreetmap.com.br), [Geonames]()  e outras, possam trabalhar mais a vontade com os dados do CEP.
+O presente projeto é uma proposta de padronização simples para que o cidadão brasileiro, e as comunidades [OpenStreetMap-Brasil](http://www.openstreetmap.com.br), [Geonames]()  e outras, possam trabalhar mais a vontade com os dados derivados do CEP.
 
 # OBJETIVOS
 
