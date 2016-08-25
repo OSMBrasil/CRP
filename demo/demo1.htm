@@ -6,13 +6,13 @@
 	<script>
 	var cc = new CRPconvert('64569-010');
 	function assertMsg(val,cmp){
-		return (val==cmp)? val: ("ERROR(<b>"+val+"</b>!="+cmp+")");
+		return (val==cmp)? val: ("ERROR(v=<b>"+val+"</b>!="+cmp+")");
 	}
 	</script>
 </head>
 
 <body>
-	<a href="https://github.com/ppKrauss/CRP">Código de Roteamento Postal</a>
+	<h1><a href="https://github.com/ppKrauss/CRP">Código de Roteamento Postal</a> (CRP)</h1>
 	<h2>Usando no Javascript</h2>
 	<pre>
 	var cc = new CRPconvert('64569-010');
@@ -23,11 +23,50 @@
 	console.log( cc.set('69345-678').asCEP() ); // <script>document.write( cc.set('69345-678').asCEP() )</script>
 	... teste você mesmo!
 	</pre>
+
+
 	<h1>TESTES</h1>
+	As listagens abaixo foram geradas pelo <a href="https://github.com/ppKrauss/CRP/blob/master/demo/demo1.php">demo.php</a>.
+	<br/>Cada entrada abaixo de "códigoX=códigoY" está sendo gerada pela lib <a href="../src/convert.js">convert.js</a> no ato da carga da página.
+	Para auditar <i>asserts</i>, ver  código-fonte deste HTML.
+
+	<h2>Conversões CEP to CRP</h2>
+	<ul>
+		<li>69900-000=<script>document.write( assertMsg(cc.set('69900-000').crp,'AC00-000') )</script>; &nbsp;&nbsp; 69950-197=<script>document.write( assertMsg(cc.set('69950-197').crp,'AC50-197') )</script>; &nbsp;&nbsp; 69999-999=<script>document.write( assertMsg(cc.set('69999-999').crp,'AC99-999') )</script></li>
+		<li>69300-000=<script>document.write( assertMsg(cc.set('69300-000').crp,'RR00-000') )</script>; &nbsp;&nbsp; 69349-878=<script>document.write( assertMsg(cc.set('69349-878').crp,'RR49-878') )</script>; &nbsp;&nbsp; 69399-999=<script>document.write( assertMsg(cc.set('69399-999').crp,'RR99-999') )</script></li>
+		<li>68900-000=<script>document.write( assertMsg(cc.set('68900-000').crp,'AP00-000') )</script>; &nbsp;&nbsp; 68950-248=<script>document.write( assertMsg(cc.set('68950-248').crp,'AP50-248') )</script>; &nbsp;&nbsp; 68999-999=<script>document.write( assertMsg(cc.set('68999-999').crp,'AP99-999') )</script></li>
+		<li>69000-000=<script>document.write( assertMsg(cc.set('69000-000').crp,'AM000-000') )</script>; &nbsp;&nbsp; 69150-432=<script>document.write( assertMsg(cc.set('69150-432').crp,'AM150-432') )</script>; &nbsp;&nbsp; 69299-999=<script>document.write( assertMsg(cc.set('69299-999').crp,'AM299-999') )</script></li>
+		<li>69400-000=<script>document.write( assertMsg(cc.set('69400-000').crp,'AM400-000') )</script>; &nbsp;&nbsp; 69649-755=<script>document.write( assertMsg(cc.set('69649-755').crp,'AM649-755') )</script>; &nbsp;&nbsp; 69899-999=<script>document.write( assertMsg(cc.set('69899-999').crp,'AM899-999') )</script></li>
+		<li>65000-000=<script>document.write( assertMsg(cc.set('65000-000').crp,'MA000-000') )</script>; &nbsp;&nbsp; 65499-586=<script>document.write( assertMsg(cc.set('65499-586').crp,'MA499-586') )</script>; &nbsp;&nbsp; 65999-999=<script>document.write( assertMsg(cc.set('65999-999').crp,'MA999-999') )</script></li>
+		<li>64000-000=<script>document.write( assertMsg(cc.set('64000-000').crp,'PI000-000') )</script>; &nbsp;&nbsp; 64500-234=<script>document.write( assertMsg(cc.set('64500-234').crp,'PI500-234') )</script>; &nbsp;&nbsp; 64999-999=<script>document.write( assertMsg(cc.set('64999-999').crp,'PI999-999') )</script></li>
+		<li>60000-000=<script>document.write( assertMsg(cc.set('60000-000').crp,'CE0000-000') )</script>; &nbsp;&nbsp; 62000-122=<script>document.write( assertMsg(cc.set('62000-122').crp,'CE2000-122') )</script>; &nbsp;&nbsp; 63999-999=<script>document.write( assertMsg(cc.set('63999-999').crp,'CE3999-999') )</script></li>
+		<li>66000-000=<script>document.write( assertMsg(cc.set('66000-000').crp,'PA6000-000') )</script>; &nbsp;&nbsp; 67450-156=<script>document.write( assertMsg(cc.set('67450-156').crp,'PA7450-156') )</script>; &nbsp;&nbsp; 68899-999=<script>document.write( assertMsg(cc.set('68899-999').crp,'PA8899-999') )</script></li>
+		<li>79000-000=<script>document.write( assertMsg(cc.set('79000-000').crp,'MS000-000') )</script>; &nbsp;&nbsp; 79499-734=<script>document.write( assertMsg(cc.set('79499-734').crp,'MS499-734') )</script>; &nbsp;&nbsp; 79999-999=<script>document.write( assertMsg(cc.set('79999-999').crp,'MS999-999') )</script></li>
+		<li>78000-000=<script>document.write( assertMsg(cc.set('78000-000').crp,'MT000-000') )</script>; &nbsp;&nbsp; 78450-209=<script>document.write( assertMsg(cc.set('78450-209').crp,'MT450-209') )</script>; &nbsp;&nbsp; 78899-999=<script>document.write( assertMsg(cc.set('78899-999').crp,'MT899-999') )</script></li>
+		<li>77000-000=<script>document.write( assertMsg(cc.set('77000-000').crp,'TO000-000') )</script>; &nbsp;&nbsp; 77499-781=<script>document.write( assertMsg(cc.set('77499-781').crp,'TO499-781') )</script>; &nbsp;&nbsp; 77999-999=<script>document.write( assertMsg(cc.set('77999-999').crp,'TO999-999') )</script></li>
+		<li>76800-000=<script>document.write( assertMsg(cc.set('76800-000').crp,'RO800-000') )</script>; &nbsp;&nbsp; 76900-036=<script>document.write( assertMsg(cc.set('76900-036').crp,'RO900-036') )</script>; &nbsp;&nbsp; 76999-999=<script>document.write( assertMsg(cc.set('76999-999').crp,'RO999-999') )</script></li>
+		<li>73000-000=<script>document.write( assertMsg(cc.set('73000-000').crp,'DF3000-000') )</script>; &nbsp;&nbsp; 73349-915=<script>document.write( assertMsg(cc.set('73349-915').crp,'DF3349-915') )</script>; &nbsp;&nbsp; 73699-999=<script>document.write( assertMsg(cc.set('73699-999').crp,'DF3699-999') )</script></li>
+		<li>72800-000=<script>document.write( assertMsg(cc.set('72800-000').crp,'GO2800-000') )</script>; &nbsp;&nbsp; 72900-215=<script>document.write( assertMsg(cc.set('72900-215').crp,'GO2900-215') )</script>; &nbsp;&nbsp; 72999-999=<script>document.write( assertMsg(cc.set('72999-999').crp,'GO2999-999') )</script></li>
+		<li>70000-000=<script>document.write( assertMsg(cc.set('70000-000').crp,'DF0000-000') )</script>; &nbsp;&nbsp; 71400-266=<script>document.write( assertMsg(cc.set('71400-266').crp,'DF1400-266') )</script>; &nbsp;&nbsp; 72799-999=<script>document.write( assertMsg(cc.set('72799-999').crp,'DF2799-999') )</script></li>
+		<li>73700-000=<script>document.write( assertMsg(cc.set('73700-000').crp,'GO3700-000') )</script>; &nbsp;&nbsp; 75249-640=<script>document.write( assertMsg(cc.set('75249-640').crp,'GO5249-640') )</script>; &nbsp;&nbsp; 76799-999=<script>document.write( assertMsg(cc.set('76799-999').crp,'GO6799-999') )</script></li>
+		<li>59000-000=<script>document.write( assertMsg(cc.set('59000-000').crp,'RN000-000') )</script>; &nbsp;&nbsp; 59499-772=<script>document.write( assertMsg(cc.set('59499-772').crp,'RN499-772') )</script>; &nbsp;&nbsp; 59999-999=<script>document.write( assertMsg(cc.set('59999-999').crp,'RN999-999') )</script></li>
+		<li>58000-000=<script>document.write( assertMsg(cc.set('58000-000').crp,'PB000-000') )</script>; &nbsp;&nbsp; 58499-864=<script>document.write( assertMsg(cc.set('58499-864').crp,'PB499-864') )</script>; &nbsp;&nbsp; 58999-999=<script>document.write( assertMsg(cc.set('58999-999').crp,'PB999-999') )</script></li>
+		<li>57000-000=<script>document.write( assertMsg(cc.set('57000-000').crp,'AL000-000') )</script>; &nbsp;&nbsp; 57500-304=<script>document.write( assertMsg(cc.set('57500-304').crp,'AL500-304') )</script>; &nbsp;&nbsp; 57999-999=<script>document.write( assertMsg(cc.set('57999-999').crp,'AL999-999') )</script></li>
+		<li>50000-000=<script>document.write( assertMsg(cc.set('50000-000').crp,'PE0000-000') )</script>; &nbsp;&nbsp; 53499-742=<script>document.write( assertMsg(cc.set('53499-742').crp,'PE3499-742') )</script>; &nbsp;&nbsp; 56999-999=<script>document.write( assertMsg(cc.set('56999-999').crp,'PE6999-999') )</script></li>
+		<li>49000-000=<script>document.write( assertMsg(cc.set('49000-000').crp,'SE000-000') )</script>; &nbsp;&nbsp; 49500-255=<script>document.write( assertMsg(cc.set('49500-255').crp,'SE500-255') )</script>; &nbsp;&nbsp; 49999-999=<script>document.write( assertMsg(cc.set('49999-999').crp,'SE999-999') )</script></li>
+		<li>40000-000=<script>document.write( assertMsg(cc.set('40000-000').crp,'BA0000-000') )</script>; &nbsp;&nbsp; 44499-779=<script>document.write( assertMsg(cc.set('44499-779').crp,'BA4499-779') )</script>; &nbsp;&nbsp; 48999-999=<script>document.write( assertMsg(cc.set('48999-999').crp,'BA8999-999') )</script></li>
+		<li>29000-000=<script>document.write( assertMsg(cc.set('29000-000').crp,'ES000-000') )</script>; &nbsp;&nbsp; 29500-266=<script>document.write( assertMsg(cc.set('29500-266').crp,'ES500-266') )</script>; &nbsp;&nbsp; 29999-999=<script>document.write( assertMsg(cc.set('29999-999').crp,'ES999-999') )</script></li>
+		<li>20000-000=<script>document.write( assertMsg(cc.set('20000-000').crp,'RJ0000-000') )</script>; &nbsp;&nbsp; 24500-013=<script>document.write( assertMsg(cc.set('24500-013').crp,'RJ4500-013') )</script>; &nbsp;&nbsp; 28999-999=<script>document.write( assertMsg(cc.set('28999-999').crp,'RJ8999-999') )</script></li>
+		<li>90000-000=<script>document.write( assertMsg(cc.set('90000-000').crp,'RS0000-000') )</script>; &nbsp;&nbsp; 94999-541=<script>document.write( assertMsg(cc.set('94999-541').crp,'RS4999-541') )</script>; &nbsp;&nbsp; 99999-999=<script>document.write( assertMsg(cc.set('99999-999').crp,'RS9999-999') )</script></li>
+		<li>80000-000=<script>document.write( assertMsg(cc.set('80000-000').crp,'PR0000-000') )</script>; &nbsp;&nbsp; 84000-298=<script>document.write( assertMsg(cc.set('84000-298').crp,'PR4000-298') )</script>; &nbsp;&nbsp; 87999-999=<script>document.write( assertMsg(cc.set('87999-999').crp,'PR7999-999') )</script></li>
+		<li>88000-000=<script>document.write( assertMsg(cc.set('88000-000').crp,'SC8000-000') )</script>; &nbsp;&nbsp; 88999-931=<script>document.write( assertMsg(cc.set('88999-931').crp,'SC8999-931') )</script>; &nbsp;&nbsp; 89999-999=<script>document.write( assertMsg(cc.set('89999-999').crp,'SC9999-999') )</script></li>
+		<li>30000-000=<script>document.write( assertMsg(cc.set('30000-000').crp,'MG0000-000') )</script>; &nbsp;&nbsp; 35000-252=<script>document.write( assertMsg(cc.set('35000-252').crp,'MG5000-252') )</script>; &nbsp;&nbsp; 39999-999=<script>document.write( assertMsg(cc.set('39999-999').crp,'MG9999-999') )</script></li>
+		<li>11000-000=<script>document.write( assertMsg(cc.set('11000-000').crp,'SP1000-000') )</script>; &nbsp;&nbsp; 15499-921=<script>document.write( assertMsg(cc.set('15499-921').crp,'SP5499-921') )</script>; &nbsp;&nbsp; 19999-999=<script>document.write( assertMsg(cc.set('19999-999').crp,'SP9999-999') )</script></li>
+		<li>01000-000=<script>document.write( assertMsg(cc.set('01000-000').crp,'ZM1000-000') )</script>; &nbsp;&nbsp; 05500-128=<script>document.write( assertMsg(cc.set('05500-128').crp,'ZM5500-128') )</script>; &nbsp;&nbsp; 09999-999=<script>document.write( assertMsg(cc.set('09999-999').crp,'ZM9999-999') )</script></li>
+	</ul>
+
 	<h2>Conversões CRP to CEP</h2>
 	<ul>
-
-
 		<li>AC00-000=<script>document.write( assertMsg(cc.asCEP('AC00-000'),'69900-000') )</script>; &nbsp;&nbsp; AC49-865=<script>document.write( assertMsg(cc.asCEP('AC49-865'),'69949-865') )</script>; &nbsp;&nbsp; AC99-999=<script>document.write( assertMsg(cc.asCEP('AC99-999'),'69999-999') )</script></li>
 		<li>RR00-000=<script>document.write( assertMsg(cc.asCEP('RR00-000'),'69300-000') )</script>; &nbsp;&nbsp; RR50-025=<script>document.write( assertMsg(cc.asCEP('RR50-025'),'69350-025') )</script>; &nbsp;&nbsp; RR99-999=<script>document.write( assertMsg(cc.asCEP('RR99-999'),'69399-999') )</script></li>
 		<li>AP00-000=<script>document.write( assertMsg(cc.asCEP('AP00-000'),'68900-000') )</script>; &nbsp;&nbsp; AP50-223=<script>document.write( assertMsg(cc.asCEP('AP50-223'),'68950-223') )</script>; &nbsp;&nbsp; AP99-999=<script>document.write( assertMsg(cc.asCEP('AP99-999'),'68999-999') )</script></li>
@@ -59,46 +98,6 @@
 		<li>MG0000-000=<script>document.write( assertMsg(cc.asCEP('MG0000-000'),'30000-000') )</script>; &nbsp;&nbsp; MG5000-369=<script>document.write( assertMsg(cc.asCEP('MG5000-369'),'35000-369') )</script>; &nbsp;&nbsp; MG9999-999=<script>document.write( assertMsg(cc.asCEP('MG9999-999'),'39999-999') )</script></li>
 		<li>SP1000-000=<script>document.write( assertMsg(cc.asCEP('SP1000-000'),'11000-000') )</script>; &nbsp;&nbsp; SP5499-652=<script>document.write( assertMsg(cc.asCEP('SP5499-652'),'15499-652') )</script>; &nbsp;&nbsp; SP9999-999=<script>document.write( assertMsg(cc.asCEP('SP9999-999'),'19999-999') )</script></li>
 		<li>ZM1000-000=<script>document.write( assertMsg(cc.asCEP('ZM1000-000'),'01000-000') )</script>; &nbsp;&nbsp; ZM5499-842=<script>document.write( assertMsg(cc.asCEP('ZM5499-842'),'05499-842') )</script>; &nbsp;&nbsp; ZM9999-999=<script>document.write( assertMsg(cc.asCEP('ZM9999-999'),'09999-999') )</script></li>
-	</ul>
-
-
-
-	<h2>Conversões CEP to CRP</h2>
-	<ul>
-
-
-		<li>69900-000=<script>document.write( assertMsg(cc.set('69900-000').crp,'AC00-000') )</script>; &nbsp;&nbsp; 69950-074=<script>document.write( assertMsg(cc.set('69950-074').crp,'AC50-074') )</script>; &nbsp;&nbsp; 69999-999=<script>document.write( assertMsg(cc.set('69999-999').crp,'AC99-999') )</script></li>
-		<li>69300-000=<script>document.write( assertMsg(cc.set('69300-000').crp,'RR00-000') )</script>; &nbsp;&nbsp; 69349-812=<script>document.write( assertMsg(cc.set('69349-812').crp,'RR49-812') )</script>; &nbsp;&nbsp; 69399-999=<script>document.write( assertMsg(cc.set('69399-999').crp,'RR99-999') )</script></li>
-		<li>68900-000=<script>document.write( assertMsg(cc.set('68900-000').crp,'AP00-000') )</script>; &nbsp;&nbsp; 68949-813=<script>document.write( assertMsg(cc.set('68949-813').crp,'AP49-813') )</script>; &nbsp;&nbsp; 68999-999=<script>document.write( assertMsg(cc.set('68999-999').crp,'AP99-999') )</script></li>
-		<li>69000-000=<script>document.write( assertMsg(cc.set('69000-000').crp,'AM000-000') )</script>; &nbsp;&nbsp; 69150-228=<script>document.write( assertMsg(cc.set('69150-228').crp,'AM150-228') )</script>; &nbsp;&nbsp; 69299-999=<script>document.write( assertMsg(cc.set('69299-999').crp,'AM299-999') )</script></li>
-		<li>69400-000=<script>document.write( assertMsg(cc.set('69400-000').crp,'AM400-000') )</script>; &nbsp;&nbsp; 69649-803=<script>document.write( assertMsg(cc.set('69649-803').crp,'AM649-803') )</script>; &nbsp;&nbsp; 69899-999=<script>document.write( assertMsg(cc.set('69899-999').crp,'AM899-999') )</script></li>
-		<li>65000-000=<script>document.write( assertMsg(cc.set('65000-000').crp,'MA000-000') )</script>; &nbsp;&nbsp; 65499-508=<script>document.write( assertMsg(cc.set('65499-508').crp,'MA499-508') )</script>; &nbsp;&nbsp; 65999-999=<script>document.write( assertMsg(cc.set('65999-999').crp,'MA999-999') )</script></li>
-		<li>64000-000=<script>document.write( assertMsg(cc.set('64000-000').crp,'PI000-000') )</script>; &nbsp;&nbsp; 64499-793=<script>document.write( assertMsg(cc.set('64499-793').crp,'PI499-793') )</script>; &nbsp;&nbsp; 64999-999=<script>document.write( assertMsg(cc.set('64999-999').crp,'PI999-999') )</script></li>
-		<li>60000-000=<script>document.write( assertMsg(cc.set('60000-000').crp,'CE0000-000') )</script>; &nbsp;&nbsp; 62000-156=<script>document.write( assertMsg(cc.set('62000-156').crp,'CE2000-156') )</script>; &nbsp;&nbsp; 63999-999=<script>document.write( assertMsg(cc.set('63999-999').crp,'CE3999-999') )</script></li>
-		<li>66000-000=<script>document.write( assertMsg(cc.set('66000-000').crp,'PA6000-000') )</script>; &nbsp;&nbsp; 67450-471=<script>document.write( assertMsg(cc.set('67450-471').crp,'PA7450-471') )</script>; &nbsp;&nbsp; 68899-999=<script>document.write( assertMsg(cc.set('68899-999').crp,'PA8899-999') )</script></li>
-		<li>79000-000=<script>document.write( assertMsg(cc.set('79000-000').crp,'MS000-000') )</script>; &nbsp;&nbsp; 79499-558=<script>document.write( assertMsg(cc.set('79499-558').crp,'MS499-558') )</script>; &nbsp;&nbsp; 79999-999=<script>document.write( assertMsg(cc.set('79999-999').crp,'MS999-999') )</script></li>
-		<li>78000-000=<script>document.write( assertMsg(cc.set('78000-000').crp,'MT000-000') )</script>; &nbsp;&nbsp; 78449-853=<script>document.write( assertMsg(cc.set('78449-853').crp,'MT449-853') )</script>; &nbsp;&nbsp; 78899-999=<script>document.write( assertMsg(cc.set('78899-999').crp,'MT899-999') )</script></li>
-		<li>77000-000=<script>document.write( assertMsg(cc.set('77000-000').crp,'TO000-000') )</script>; &nbsp;&nbsp; 77500-263=<script>document.write( assertMsg(cc.set('77500-263').crp,'TO500-263') )</script>; &nbsp;&nbsp; 77999-999=<script>document.write( assertMsg(cc.set('77999-999').crp,'TO999-999') )</script></li>
-		<li>76800-000=<script>document.write( assertMsg(cc.set('76800-000').crp,'RO800-000') )</script>; &nbsp;&nbsp; 76900-421=<script>document.write( assertMsg(cc.set('76900-421').crp,'RO900-421') )</script>; &nbsp;&nbsp; 76999-999=<script>document.write( assertMsg(cc.set('76999-999').crp,'RO999-999') )</script></li>
-		<li>73000-000=<script>document.write( assertMsg(cc.set('73000-000').crp,'DF3000-000') )</script>; &nbsp;&nbsp; 73349-584=<script>document.write( assertMsg(cc.set('73349-584').crp,'DF3349-584') )</script>; &nbsp;&nbsp; 73699-999=<script>document.write( assertMsg(cc.set('73699-999').crp,'DF3699-999') )</script></li>
-		<li>72800-000=<script>document.write( assertMsg(cc.set('72800-000').crp,'GO2800-000') )</script>; &nbsp;&nbsp; 72900-177=<script>document.write( assertMsg(cc.set('72900-177').crp,'GO2900-177') )</script>; &nbsp;&nbsp; 72999-999=<script>document.write( assertMsg(cc.set('72999-999').crp,'GO2999-999') )</script></li>
-		<li>70000-000=<script>document.write( assertMsg(cc.set('70000-000').crp,'DF0000-000') )</script>; &nbsp;&nbsp; 71400-450=<script>document.write( assertMsg(cc.set('71400-450').crp,'DF1400-450') )</script>; &nbsp;&nbsp; 72799-999=<script>document.write( assertMsg(cc.set('72799-999').crp,'DF2799-999') )</script></li>
-		<li>73700-000=<script>document.write( assertMsg(cc.set('73700-000').crp,'GO3700-000') )</script>; &nbsp;&nbsp; 75249-841=<script>document.write( assertMsg(cc.set('75249-841').crp,'GO5249-841') )</script>; &nbsp;&nbsp; 76799-999=<script>document.write( assertMsg(cc.set('76799-999').crp,'GO6799-999') )</script></li>
-		<li>59000-000=<script>document.write( assertMsg(cc.set('59000-000').crp,'RN000-000') )</script>; &nbsp;&nbsp; 59500-262=<script>document.write( assertMsg(cc.set('59500-262').crp,'RN500-262') )</script>; &nbsp;&nbsp; 59999-999=<script>document.write( assertMsg(cc.set('59999-999').crp,'RN999-999') )</script></li>
-		<li>58000-000=<script>document.write( assertMsg(cc.set('58000-000').crp,'PB000-000') )</script>; &nbsp;&nbsp; 58500-385=<script>document.write( assertMsg(cc.set('58500-385').crp,'PB500-385') )</script>; &nbsp;&nbsp; 58999-999=<script>document.write( assertMsg(cc.set('58999-999').crp,'PB999-999') )</script></li>
-		<li>57000-000=<script>document.write( assertMsg(cc.set('57000-000').crp,'AL000-000') )</script>; &nbsp;&nbsp; 57499-765=<script>document.write( assertMsg(cc.set('57499-765').crp,'AL499-765') )</script>; &nbsp;&nbsp; 57999-999=<script>document.write( assertMsg(cc.set('57999-999').crp,'AL999-999') )</script></li>
-		<li>50000-000=<script>document.write( assertMsg(cc.set('50000-000').crp,'PE0000-000') )</script>; &nbsp;&nbsp; 53500-340=<script>document.write( assertMsg(cc.set('53500-340').crp,'PE3500-340') )</script>; &nbsp;&nbsp; 56999-999=<script>document.write( assertMsg(cc.set('56999-999').crp,'PE6999-999') )</script></li>
-		<li>49000-000=<script>document.write( assertMsg(cc.set('49000-000').crp,'SE000-000') )</script>; &nbsp;&nbsp; 49500-015=<script>document.write( assertMsg(cc.set('49500-015').crp,'SE500-015') )</script>; &nbsp;&nbsp; 49999-999=<script>document.write( assertMsg(cc.set('49999-999').crp,'SE999-999') )</script></li>
-		<li>40000-000=<script>document.write( assertMsg(cc.set('40000-000').crp,'BA0000-000') )</script>; &nbsp;&nbsp; 44499-826=<script>document.write( assertMsg(cc.set('44499-826').crp,'BA4499-826') )</script>; &nbsp;&nbsp; 48999-999=<script>document.write( assertMsg(cc.set('48999-999').crp,'BA8999-999') )</script></li>
-		<li>29000-000=<script>document.write( assertMsg(cc.set('29000-000').crp,'ES000-000') )</script>; &nbsp;&nbsp; 29500-318=<script>document.write( assertMsg(cc.set('29500-318').crp,'ES500-318') )</script>; &nbsp;&nbsp; 29999-999=<script>document.write( assertMsg(cc.set('29999-999').crp,'ES999-999') )</script></li>
-		<li>20000-000=<script>document.write( assertMsg(cc.set('20000-000').crp,'RJ0000-000') )</script>; &nbsp;&nbsp; 24499-934=<script>document.write( assertMsg(cc.set('24499-934').crp,'RJ4499-934') )</script>; &nbsp;&nbsp; 28999-999=<script>document.write( assertMsg(cc.set('28999-999').crp,'RJ8999-999') )</script></li>
-		<li>90000-000=<script>document.write( assertMsg(cc.set('90000-000').crp,'RS0000-000') )</script>; &nbsp;&nbsp; 95000-040=<script>document.write( assertMsg(cc.set('95000-040').crp,'RS5000-040') )</script>; &nbsp;&nbsp; 99999-999=<script>document.write( assertMsg(cc.set('99999-999').crp,'RS9999-999') )</script></li>
-		<li>80000-000=<script>document.write( assertMsg(cc.set('80000-000').crp,'PR0000-000') )</script>; &nbsp;&nbsp; 83999-759=<script>document.write( assertMsg(cc.set('83999-759').crp,'PR3999-759') )</script>; &nbsp;&nbsp; 87999-999=<script>document.write( assertMsg(cc.set('87999-999').crp,'PR7999-999') )</script></li>
-		<li>88000-000=<script>document.write( assertMsg(cc.set('88000-000').crp,'SC8000-000') )</script>; &nbsp;&nbsp; 88999-828=<script>document.write( assertMsg(cc.set('88999-828').crp,'SC8999-828') )</script>; &nbsp;&nbsp; 89999-999=<script>document.write( assertMsg(cc.set('89999-999').crp,'SC9999-999') )</script></li>
-		<li>30000-000=<script>document.write( assertMsg(cc.set('30000-000').crp,'MG0000-000') )</script>; &nbsp;&nbsp; 35000-441=<script>document.write( assertMsg(cc.set('35000-441').crp,'MG5000-441') )</script>; &nbsp;&nbsp; 39999-999=<script>document.write( assertMsg(cc.set('39999-999').crp,'MG9999-999') )</script></li>
-		<li>11000-000=<script>document.write( assertMsg(cc.set('11000-000').crp,'SP1000-000') )</script>; &nbsp;&nbsp; 15499-769=<script>document.write( assertMsg(cc.set('15499-769').crp,'SP5499-769') )</script>; &nbsp;&nbsp; 19999-999=<script>document.write( assertMsg(cc.set('19999-999').crp,'SP9999-999') )</script></li>
-		<li>01000-000=<script>document.write( assertMsg(cc.set('01000-000').crp,'ZM1000-000') )</script>; &nbsp;&nbsp; 05500-478=<script>document.write( assertMsg(cc.set('05500-478').crp,'ZM5500-478') )</script>; &nbsp;&nbsp; 09999-999=<script>document.write( assertMsg(cc.set('09999-999').crp,'ZM9999-999') )</script></li>
-		
 	</ul>
 
 </body>

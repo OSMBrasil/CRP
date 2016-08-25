@@ -19,7 +19,7 @@ function object_flip( trans ) {
 var CRPconvert = function (x=null) {
 
   this.prefMain_rgx = /^(699|693|689|69|65|64|79|78|77|76|59|58|57|5|49|4|29|2|9|3|1|0)/;
-  
+
   this.prefExtra_rgx= /^(?:(6[0-3])|(6(?:[67][0-9]|8[0-8]))|(7(?:3[0-6]|[01]|2[0-7]))|(7(?:2[8-9]|3[7-9]|[45]|6[0-7]))|(8[0-7])|(8[8-9]))/;
 
 	this.UF2prefExtra = {"CE":"6", "PA":"6", "DF":"7", "GO":"7", "PR":"8", "SC":"8"};
@@ -120,9 +120,10 @@ CRPconvert.prototype.setContextByCEP = function (cep) {
 		this.reset();
     var m = this.prefExtra_rgx.exec(cep);
 		if ( m!= null ) {
-			var aux = m.length-2;
-			this.setUF( this.prefExtra2UF[aux] );
-			this.crp_pref = this.prefExtra2pref[aux];
+      var j=1;  // infelizmente m.length não se limita ao ultimo nao-null, requer scan
+      for(; j<=m.length  && m[j]==undefined; j++);
+			this.setUF( this.prefExtra2UF[j-1] );
+			this.crp_pref = this.prefExtra2pref[j-1]; // ou UF2pref, economiza uma array.
 		} else if ( (m = this.prefMain_rgx.exec(cep))!= null ) {
 			this.crp_pref = m[0];
 			this.setUF( this.prefMain2uf[this.crp_pref] );

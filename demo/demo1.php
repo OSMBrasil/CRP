@@ -21,11 +21,13 @@ else
 $head = array_shift($tab);
 
 $c = new CRPconvert();
+$n=0;
 foreach($tab as $r) {
 	$a = array_combine($head,$r);
 	$x = trim($a['CRP-from']);
-	if ($modeJs && $x) {
+	if ($modeJs && $x) { // ideal gerando por jQuery... mas por hora Jvascript puro e simples.
 			$msg = '';
+			$n++;
 			for($i=0;$i<3;$i++) {
 				if ($i==0) {$input = $a['CRP-from']; $out = $a['CEP-from'];} //from
 				elseif ($i==2) {$input = $a['CRP-to']; $out = $a['CEP-to'];}  // to
@@ -38,11 +40,11 @@ foreach($tab as $r) {
 				}
 				$sep = $i? "; &nbsp;&nbsp; ": '';
 				if ($modeJs==1)   // CRP  to CEP
-					$msg .= "$sep$input=<script>document.write( assertMsg(cc.asCEP('$input'),'$out') )</script>";
+					$msg .= "$sep$input=<script>document.write( assertMsg(cc.asCEP('$input'),'$out') )</script>"; // or <span>$input</span>
 				else           		// CEP to CRP
 					$msg .= "$sep$out=<script>document.write( assertMsg(cc.set('$out').crp,'$input') )</script>";
 			} // for
-			echo "\n<li>$msg</li>";
+			echo "\n<li>$msg</li>"; //or "\n<li id=\"x$modeJs-$n\">$msg</li>";
 	} elseif (!$modeJs && $x) { // CEP to
 		$c->set($x);
 		$cep = $c->asCEP();
