@@ -1,5 +1,5 @@
 # CRP - *C*ódigo de *R*oteamento *P*ostal
-(ver demo em http://ppkrauss.github.io/CRP)
+(ver demo em http://ppkrauss.github.io/CRP e dados em [neste link](http://data.okfn.org/tools/view?url=https%3A%2F%2Fraw.githubusercontent.com%2FppKrauss%2FCRP%2Fmaster%2Fdatapackage.json))
 
 Os códigos de CEP de 5 dígitos (`CEP5`) **são de domínio público**, como se espera que seja um bem cultural, um complemento aos nomes de cidade e nomes de bairro, presente em mapas e guias públicos, e com seu uso obrigatório em formulários e cadastros exigidos pelo governo desde a década de 1970.
 
