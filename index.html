@@ -26,11 +26,12 @@
 
 
 	<h1>TESTES</h1>
-	As listagens abaixo foram geradas pelo <a href="https://github.com/ppKrauss/CRP/blob/master/src/demo1.php">demo.php</a>.
-	<br/>Cada entrada abaixo de "códigoX=códigoY" está sendo gerada pela lib <a href="src/convert.js">convert.js</a> no ato da carga da página.
+	Cada entrada abaixo de "códigoX=códigoY" está sendo gerada pela lib <a href="src/convert.js">convert.js</a> no ato da carga da página.
 	Para auditar <i>asserts</i>, ver  código-fonte deste HTML.
 
 	<h2>Conversões CEP to CRP</h2>
+	A listagem abaixo foi gerada com  <code>php src/demo.php 1</code> (ver pelo <a href="https://github.com/ppKrauss/CRP/blob/master/src/demo1.php">demo.php</a>).
+
 	<ul>
 		<li>69900-000=<script>document.write( assertMsg(cc.set('69900-000').crp,'AC00-000') )</script>; &nbsp;&nbsp; 69950-197=<script>document.write( assertMsg(cc.set('69950-197').crp,'AC50-197') )</script>; &nbsp;&nbsp; 69999-999=<script>document.write( assertMsg(cc.set('69999-999').crp,'AC99-999') )</script></li>
 		<li>69300-000=<script>document.write( assertMsg(cc.set('69300-000').crp,'RR00-000') )</script>; &nbsp;&nbsp; 69349-878=<script>document.write( assertMsg(cc.set('69349-878').crp,'RR49-878') )</script>; &nbsp;&nbsp; 69399-999=<script>document.write( assertMsg(cc.set('69399-999').crp,'RR99-999') )</script></li>
@@ -65,7 +66,9 @@
 		<li>01000-000=<script>document.write( assertMsg(cc.set('01000-000').crp,'ZM1000-000') )</script>; &nbsp;&nbsp; 05500-128=<script>document.write( assertMsg(cc.set('05500-128').crp,'ZM5500-128') )</script>; &nbsp;&nbsp; 09999-999=<script>document.write( assertMsg(cc.set('09999-999').crp,'ZM9999-999') )</script></li>
 	</ul>
 
+
 	<h2>Conversões CRP to CEP</h2>
+	A listagem abaixo foi gerada com  <code>php src/demo.php 2</code> (ver pelo <a href="https://github.com/ppKrauss/CRP/blob/master/src/demo1.php">demo.php</a>).
 	<ul>
 		<li>AC00-000=<script>document.write( assertMsg(cc.asCEP('AC00-000'),'69900-000') )</script>; &nbsp;&nbsp; AC49-865=<script>document.write( assertMsg(cc.asCEP('AC49-865'),'69949-865') )</script>; &nbsp;&nbsp; AC99-999=<script>document.write( assertMsg(cc.asCEP('AC99-999'),'69999-999') )</script></li>
 		<li>RR00-000=<script>document.write( assertMsg(cc.asCEP('RR00-000'),'69300-000') )</script>; &nbsp;&nbsp; RR50-025=<script>document.write( assertMsg(cc.asCEP('RR50-025'),'69350-025') )</script>; &nbsp;&nbsp; RR99-999=<script>document.write( assertMsg(cc.asCEP('RR99-999'),'69399-999') )</script></li>
