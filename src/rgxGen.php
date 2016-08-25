@@ -15,7 +15,7 @@ $pref2uf = [];
 $uf2pref = [];
 foreach($t as $r) {
 	$a = array_combine($thead,$r);
-	if ($a['range-prefix']!='x') { // ignore lines with "other part"
+	if ($a['range-prefix']>'') { // ignore lines with "other part"
 		if (!isset($CEPranges[$a['range-prefix']]))
 			$CEPranges[$a['range-prefix']]=[];
 		//if (isset($CEPranges[$a['range-prefix']][$a['CRP-prefix']]))
