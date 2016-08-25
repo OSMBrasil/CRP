@@ -2,13 +2,12 @@
 //
 // at CRP's project root, `php demo/demo1.php | more`
 // USAGE:
-//   php demo/demo1.php
-//   php demo/demo1.php 1 > part1_OfDemo1Htm
-//   php demo/demo1.php 2 > part2_OfDemo1Htm
+//   php src/demo1.php
+//   php src/demo1.php 1 > part1_OfDemo1Htm
+//   php src/demo1.php 2 > part2_OfDemo1Htm
 //
 
-include('src/convert.php');
-
+include('convert.php');
 
 $f = 'data/CEP-to-CRP.csv';
 $tab = NULL;
