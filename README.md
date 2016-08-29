@@ -53,15 +53,18 @@ O formato CRM acima descrito também pode:
 ## Notas sobre o ecosistema de CRPs
 Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a UF (a rigor "subdivisão principal") como prefixo. A codificação em uma ou duas letras dos nomes das subdivisões do país,  por sua vez é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
 
-## Notas sovre o uso em SQL
+## Notas sobre a implantação em SQL
 
 Como numa [bae de dados SQL](https://en.wikipedia.org/wiki/SQL) é mais econômico representar uma sequência de dígitos na forma de inteiro, uma tabela SQL de *códigos CRP* pode ser expressa como se segue:
 
 ```sql
 CREATE TABLE crp (
 	uf char(2) NOT NULL,	-- UF, letras CRP. REFERENCES state(uf).
-	suffix int NOT NULL,    -- dígitos CRP
+	cod int NOT NULL,       -- dígitos CRP
 	info  JSONb,            -- demais informações desejadas. PostgreSQL 9.5+
-	PRIMARY KEY (prefix,suffix)
+	PRIMARY KEY (uf,cod),
+	CHECK(crp_is_valid(uf,suffix))
 );
 ```
+
+No caso do PostgreSQL, que oferece nativamente o tratamento de regurlar expressions,  o código de `crp_is_valid()` pode ser implementado em SQL,  [PL/pgSQL](https://www.postgresql.org/docs/9.5/static/plpgsql.html) ou adaptando diretamente os códigos deste projeto, Javascript para [PLv8](https://github.com/plv8/plv8) ou PHP para [PL/PHP](https://www.postgresql.org/docs/9.5/static/external-pl.html).
