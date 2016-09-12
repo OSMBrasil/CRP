@@ -39,9 +39,9 @@ Tendo isso em vista, a conversão entre CEP e CRP seria simples e facilmente rev
 
 * Os CEPs  do Amazonas ("69000-000" a "69299-999" e "69400-000" a "69899-999") seriam entradas com prefixo "AM" e sufixos variando de 0 a 999999 (seis dígitos), ou seja, _strings_ representadas como "AM000-000" a "AM299-999" e "AM400-000" a "AM899-999". <br/>Para converter de CRP de volta para CEP basta trocar "AM" por "69".
 
-A única excessão à regra do "nome do estado no prefixo" seria São Paulo, que tem uma conjunto de CEPs só para a zona metropolitana ("01000-000" a "09999-999"), o qual poderia ser batizado de "ZM".
+A única excessão à regra do "nome da UF no prefixo" seria São Paulo, que tem uma conjunto de CEPs só para a zona/região metropolitana ("01000-000" a "09999-999"), batizado de "ZM" (com "Z" de "zona" para destacar dos demais).
 
-A tabela completa, baseada na [lista geral dos CEPs](https://en.wikipedia.org/wiki/List_of_postal_codes_in_Brazil#Eight-digit_form), está em **[CEP-to-CRP.csv](data/CEP-to-CRP.csv)**, e define a rigor todos os detalhes da conversão entre *strings* de CEP e CRP.  O script PHP [rgxGen.php](src/rgxGen.php) gera as [*regular expressions*](https://en.wikipedia.org/wiki/Regular_expression) adequadas ao algoritmo de conversão &mdash;  dois sexemplos foram implementados implementadom, um  em Javascript em [convert.js](src/convert.js), usado no [demo](http://ppkrauss.github.io/CRP), e outro em  PHP no script [convert.php](src/convert.php).
+A tabela completa, baseada na [lista geral dos CEPs](https://en.wikipedia.org/wiki/List_of_postal_codes_in_Brazil#Eight-digit_form), está em **[CEP-to-CRP.csv](data/CEP-to-CRP.csv)**, e define com rigor todos os detalhes da conversão entre *strings* de CEP e CRP.  O script PHP [rgxGen.php](src/rgxGen.php) gera as [*regular expressions*](https://en.wikipedia.org/wiki/Regular_expression) adequadas ao algoritmo de conversão &mdash;  dois exemplos foram implementados, um  em Javascript, [convert.js](src/convert.js), usado no [demo](http://ppkrauss.github.io/CRP), e outro em  PHP no script [convert.php](src/convert.php).
 
 ## Notas sobre extensibilidade e compactação
 O formato CRM acima descrito também pode:
@@ -51,11 +51,11 @@ O formato CRM acima descrito também pode:
 * ter seu código compactado, reduzido apenas à parte inteira (`CRP_int`), quando o contexto de UF (ou zona metropolitana) for conhecido.
 
 ## Notas sobre o ecosistema de CRPs
-Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a UF (a rigor "subdivisão principal") como prefixo. A codificação em uma ou duas letras dos nomes das subdivisões do país,  por sua vez é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
+Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a "subdivisão principal do país" como prefixo. A codificação em uma ou duas letras dos nomes das subdivisões do país,  por sua vez, é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
 
 ## Notas sobre a implantação em SQL
 
-Como numa [bae de dados SQL](https://en.wikipedia.org/wiki/SQL) é mais econômico representar uma sequência de dígitos na forma de inteiro, uma tabela SQL de *códigos CRP* pode ser expressa como se segue:
+Como numa [base de dados SQL](https://en.wikipedia.org/wiki/SQL) é mais econômico representar uma sequência de dígitos na forma de inteiro, uma tabela SQL de *códigos CRP* pode ser expressa como se segue:
 
 ```sql
 CREATE TABLE crp (
@@ -65,6 +65,10 @@ CREATE TABLE crp (
 	PRIMARY KEY (uf,cod),
 	CHECK(crp_is_valid(uf,suffix))
 );
+
+CREATE VIEW vw_crp AS 
+  SELECT *, crp_format(uf,cod) AS crp, crp_asCEP(uf,cod) AS cep 
+  FROM crp;
 ```
 
-No caso do PostgreSQL, que oferece nativamente o tratamento de regurlar expressions,  o código de `crp_is_valid()` pode ser implementado em SQL,  [PL/pgSQL](https://www.postgresql.org/docs/9.5/static/plpgsql.html) ou adaptando diretamente os códigos deste projeto, Javascript para [PLv8](https://github.com/plv8/plv8) ou PHP para [PL/PHP](https://www.postgresql.org/docs/9.5/static/external-pl.html).
+No caso do PostgreSQL, que oferece nativamente o tratamento de regurlar expressions,  o código das  funções `crp_is_valid()`,  `crp_asCEP()` e `crp_format()` pode ser implementado em SQL,  [PL/pgSQL](https://www.postgresql.org/docs/9.5/static/plpgsql.html) ou adaptando diretamente os códigos deste projeto ([convert.js](src/convert.js) para [PLv8](https://github.com/plv8/plv8) ou [convert.php](src/convert.php) para [PL/PHP](https://www.postgresql.org/docs/9.5/static/external-pl.html)).
