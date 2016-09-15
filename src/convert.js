@@ -3,7 +3,11 @@
  * Please review for annotations, https://developers.google.com/closure/compiler/docs/js-for-compiler?csw=1
  */
 
-
+/**
+* Returns a flip object.
+* @param {Array} trans.
+* @return {Array} tmp_ar.
+*/
 function object_flip( trans ) {
   // ... or use underscorejs.org functions like invert and union
     var key, tmp_ar = {};
