@@ -72,3 +72,7 @@ CREATE VIEW vw_crp AS
 ```
 
 No caso do PostgreSQL, que oferece nativamente o tratamento de regurlar expressions,  o código das  funções `crp_is_valid()`,  `crp_asCEP()` e `crp_format()` pode ser implementado em SQL,  [PL/pgSQL](https://www.postgresql.org/docs/9.5/static/plpgsql.html) ou adaptando diretamente os códigos deste projeto ([convert.js](src/convert.js) para [PLv8](https://github.com/plv8/plv8) ou [convert.php](src/convert.php) para [PL/PHP](https://www.postgresql.org/docs/9.5/static/external-pl.html)).
+
+------
+
+[![License: CC0](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CC0_button.svg/88px-CC0_button.svg.png)(http://creativecommons.org/publicdomain/zero/1.0)
