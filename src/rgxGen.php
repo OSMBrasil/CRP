@@ -47,6 +47,10 @@ foreach ($CEPranges as $pref => $r) {
 	}
 }
 
+$xx = array_combine($prefExtra2UF,$prefExtra2pref); // new for changed scripts
+$yy = array_flip($prefMain2uf);   // new for changed scripts
+
+
 // RESULTS:
 $prefMain_rgx  = "/^($prefMain_rgx)/";
 $prefExtra_rgx = '/^'. join('|',$prefExtra_rgx) .'/';
@@ -58,21 +62,39 @@ $js_prefExt     = json_encode($prefExtra2pref);
 $php_prefMain2uf = php_encode($prefMain2uf);
 $js_prefMain2uf  = json_encode($prefMain2uf);
 
+$php_xx = php_encode($xx);
+$js_xx = json_encode($xx);
+
+$php_yy = php_encode($yy);
+$js_yy = json_encode($yy);
+
+$preLens = []; // new for SQL direc to_char(int,format) convertions of crc_int.
+foreach(array_merge($xx,$yy) as $uf=>$pref) 
+	$preLens[$uf] = 'fm'.str_pad('0-000', 9-strlen($pref), "0", STR_PAD_LEFT);
+ksort($preLens);
+
+$php_preLens = php_encode($preLens);
+$js_preLens = json_encode($preLens);
+
 print <<<scripts
 
 JAVSCRIPT:
 	this.prefMain_rgx = $prefMain_rgx;
 	this.prefExtra_rgx= $prefExtra_rgx;
 	this.prefExtra2UF = $js_prefExtra2UF;
+	this.UF2prefExtra = $js_xx;
 	this.prefExtra2pref = $js_prefExt;
 	this.prefMain2uf = $js_prefMain2uf;
-
+	this.uf2prefMain = $js_yy;
+	this.preLens     = $js_preLens;
 PHP:
 	\$this->prefMain_rgx = '$prefMain_rgx';
 	\$this->prefExtra_rgx= '$prefExtra_rgx';
 	\$this->prefExtra2UF = $php_prefExtra2UF;
+	\$this->UF2prefExtra = $php_xx;
 	\$this->prefExtra2pref = $php_prefExt;
 	\$this->prefMain2uf = $php_prefMain2uf;
+	\$this->uf2prefMain = $php_yy;
 
 scripts;
 
