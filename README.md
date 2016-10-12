@@ -16,7 +16,7 @@ A finalidade do presente projeto é  **estabelecer as convenções** para se tra
 
 # CONVENÇÃO DO CRP
 
-As convenções a seguir estão sendo submetidas à aprecisação da comunidade de potenciais usuários.
+As convenções a seguir estão sendo submetidas à apreciação da comunidade de potenciais usuários.
 
 ## Nome 
 
@@ -24,7 +24,7 @@ O nome "CRP" é uma alternativa à marca "CEP". Este projeto está efetuando o r
 
 As principais aplicações do CEP nos dias de hoje (2016) estão vinculadas às finalidades logísticas. Neste sentido o termo "roteamento" (empregado por exemplo na Alemanha e na Suíça) pode ser adotado no lugar de "endereçamento". Este é o nexo para a sugestão do  nome alternativo **`CRP`**, abreviação de **Código de Roteamento Postal**.
 
-<small>NOTA: a ideia de "roteamento" no lugar de "endereçamento" ajuda inclusive a evitar confusão com termos como "endereço do lote" e "ponto de endereçamento" &mdash; o lote ou seu centroide pode ter mais de um CEP, ou seja, o lote pode ter mais de um portão para receber entregas.</small>
+<small>NOTA: a ideia de "roteamento" no lugar de "endereçamento" ajuda inclusive a evitar confusão com termos como "endereço do lote" e "ponto de endereçamento" &mdash; o lote ou seu centróide pode ter mais de um CEP, ou seja, o lote pode ter mais de um portão para receber entregas.</small>
 
 ## Código
 A proposta de sintaxe é bastante simples, a maior parte das explicações a seguir é para demonstrar que essa sintaxe é reversível e as suas especificações são completas.
@@ -39,7 +39,7 @@ Tendo isso em vista, a conversão entre CEP e CRP seria simples e facilmente rev
 
 * Os CEPs  do Amazonas ("69000-000" a "69299-999" e "69400-000" a "69899-999") seriam entradas com prefixo "AM" e sufixos variando de 0 a 999999 (seis dígitos), ou seja, _strings_ representadas como "AM000-000" a "AM299-999" e "AM400-000" a "AM899-999". <br/>Para converter de CRP de volta para CEP basta trocar "AM" por "69".
 
-A única excessão à regra do "nome da UF no prefixo" seria São Paulo, que tem uma conjunto de CEPs só para a zona/região metropolitana ("01000-000" a "09999-999"), batizado de "ZM" (com "Z" de "zona" para destacar dos demais).
+A única exceção à regra do "nome da UF no prefixo" seria São Paulo, que tem uma conjunto de CEPs só para a zona/região metropolitana ("01000-000" a "09999-999"), batizado de "ZM" (com "Z" de "zona" para destacar dos demais).
 
 A tabela completa, baseada na [lista geral dos CEPs](https://en.wikipedia.org/wiki/List_of_postal_codes_in_Brazil#Eight-digit_form), está em **[CEP-to-CRP.csv](data/CEP-to-CRP.csv)**, e define com rigor todos os detalhes da conversão entre *strings* de CEP e CRP.  O script PHP [rgxGen.php](src/rgxGen.php) gera as [*regular expressions*](https://en.wikipedia.org/wiki/Regular_expression) adequadas ao algoritmo de conversão &mdash;  dois exemplos foram implementados, um  em Javascript, [convert.js](src/convert.js), usado no [demo](http://ppkrauss.github.io/CRP), e outro em  PHP no script [convert.php](src/convert.php).
 
@@ -50,7 +50,7 @@ O formato CRM acima descrito também pode:
 
 * ter seu código compactado, reduzido apenas à parte inteira (`CRP_int`), quando o contexto de UF (ou zona metropolitana) for conhecido.
 
-## Notas sobre o ecosistema de CRPs
+## Notas sobre o ecossistema de CRPs
 Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a "subdivisão principal do país" como prefixo. A codificação em uma ou duas letras dos nomes das subdivisões do país,  por sua vez, é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
 
 ## Notas sobre a implantação em SQL
@@ -71,8 +71,11 @@ CREATE VIEW vw_crp AS
   FROM crp;
 ```
 
-No caso do PostgreSQL, que oferece nativamente o tratamento de regurlar expressions,  o código das  funções `crp_is_valid()`,  `crp_asCEP()` e `crp_format()` pode ser implementado em SQL,  [PL/pgSQL](https://www.postgresql.org/docs/9.5/static/plpgsql.html) ou adaptando diretamente os códigos deste projeto ([convert.js](src/convert.js) para [PLv8](https://github.com/plv8/plv8) ou [convert.php](src/convert.php) para [PL/PHP](https://www.postgresql.org/docs/9.5/static/external-pl.html)).
+No caso do PostgreSQL, que oferece nativamente o tratamento de [regular expressions](https://en.wikipedia.org/wiki/Regular_expression),  o código das  funções `crp_is_valid()`,  `crp_asCEP()` e `crp_format()` pode ser implementado em SQL,  [PL/pgSQL](https://www.postgresql.org/docs/9.5/static/plpgsql.html) ou adaptando diretamente os códigos deste projeto ([convert.js](src/convert.js) para [PLv8](https://github.com/plv8/plv8) ou [convert.php](src/convert.php) para [PL/PHP](https://www.postgresql.org/docs/9.5/static/external-pl.html)).
 
 ------
+
+# Licença
+Conteúdo, dados e algoritmos: domínio público.
 
 [![License: CC0](https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/CC0_button.svg/88px-CC0_button.svg.png)](http://creativecommons.org/publicdomain/zero/1.0)
