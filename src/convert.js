@@ -21,22 +21,18 @@ function object_flip( trans ) {
  * CRP conversions tool kit class.
  */
 var CRPconvert = function (x=null) {
-
   this.prefMain_rgx = /^(699|693|689|69|65|64|79|78|77|76|59|58|57|5|49|4|29|2|9|3|1|0)/;
-
   this.prefExtra_rgx= /^(?:(6[0-3])|(6(?:[67][0-9]|8[0-8]))|(7(?:3[0-6]|[01]|2[0-7]))|(7(?:2[8-9]|3[7-9]|[45]|6[0-7]))|(8[0-7])|(8[8-9]))/;
-
 	this.UF2prefExtra = {"CE":"6", "PA":"6", "DF":"7", "GO":"7", "PR":"8", "SC":"8"};
-	this.prefMain2uf = {
-    "699":"AC","693":"RR","689":"AP","69":"AM","65":"MA","64":"PI","79":"MS","78":"MT",
-    "77":"TO","76":"RO","59":"RN","58":"PB","57":"AL","5":"PE","49":"SE","4":"BA","29":"ES",
-    "2":"RJ","9":"RS","3":"MG","1":"SP","0":"ZM"
+	this.uf2prefMain = {
+    "AC":699,"RR":693,"AP":689,"AM":69,"MA":65,"PI":64,"MS":79,"MT":78,"TO":77,"RO":76,"RN":59,
+    "PB":58,"AL":57,"PE":5,"SE":49,"BA":4,"ES":29,"RJ":2,"RS":9,"MG":3,"SP":1,"ZM":0
   };
-
   this.debug = true;
 
-  this.UF2prefFull	  = Object.assign( object_flip(this.prefMain2uf), this.UF2prefExtra );
-  //this.prefExtra2UF   = Object.keys(this.UF2prefExtra);
+  this.prefMain2uf = object_flip(this.uf2prefMain);
+  this.UF2prefFull	  = Object.assign( this.uf2prefMain, this.UF2prefExtra );
+
   this.prefExtra2UF   = new Array();
   this.prefExtra2pref = new Array();
   for (var k in this.UF2prefExtra) {
