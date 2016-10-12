@@ -23,8 +23,8 @@ function object_flip( trans ) {
 var CRPconvert = function (x=null) {
   this.prefMain_rgx = /^(699|693|689|69|65|64|79|78|77|76|59|58|57|5|49|4|29|2|9|3|1|0)/;
   this.prefExtra_rgx= /^(?:(6[0-3])|(6(?:[67][0-9]|8[0-8]))|(7(?:3[0-6]|[01]|2[0-7]))|(7(?:2[8-9]|3[7-9]|[45]|6[0-7]))|(8[0-7])|(8[8-9]))/;
-	this.UF2prefExtra = {"CE":"6", "PA":"6", "DF":"7", "GO":"7", "PR":"8", "SC":"8"};
-	this.uf2prefMain = {
+  this.UF2prefExtra = {"CE":"6", "PA":"6", "DF":"7", "GO":"7", "PR":"8", "SC":"8"};
+  this.uf2prefMain = {
     "AC":699,"RR":693,"AP":689,"AM":69,"MA":65,"PI":64,"MS":79,"MT":78,"TO":77,"RO":76,"RN":59,
     "PB":58,"AL":57,"PE":5,"SE":49,"BA":4,"ES":29,"RJ":2,"RS":9,"MG":3,"SP":1,"ZM":0
   };
@@ -36,8 +36,8 @@ var CRPconvert = function (x=null) {
   this.prefExtra2UF   = new Array();
   this.prefExtra2pref = new Array();
   for (var k in this.UF2prefExtra) {
-      this.prefExtra2UF.push(k);  // keys
-      this.prefExtra2pref.push(this.UF2prefExtra[k]); //values
+    this.prefExtra2UF.push(k);  // keys
+    this.prefExtra2pref.push(this.UF2prefExtra[k]); //values
   }
   if (x) this.set(x);
 }; // class CRPconvert constructor
