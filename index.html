@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<h1><a href="https://github.com/ppKrauss/CRP">Código de Roteamento Postal</a> (CRP)</h1>
+	<h1><a href="https://github.com/OSMBrasil/CRP">Código de Roteamento Postal</a> (CRP)</h1>
 	<h2>Usando no Javascript</h2>
 	<pre>
 	var cc = new CRPconvert('64569-010');
@@ -30,7 +30,7 @@
 	Para auditar <i>asserts</i>, ver  código-fonte deste HTML.
 
 	<h2>Conversões CEP to CRP</h2>
-	A listagem abaixo foi gerada com  <code>php <a href="https://github.com/ppKrauss/CRP/blob/master/src/demo1.php">src/demo.php</a> 1</code>.
+	A listagem abaixo foi gerada com  <code>php <a href="https://github.com/OSMBrasil/CRP/blob/master/src/demo1.php">src/demo.php</a> 1</code>.
 
 	<ul>
 		<li>69900-000=<script>document.write( assertMsg(cc.set('69900-000').crp,'AC00-000') )</script>; &nbsp;&nbsp; 69950-197=<script>document.write( assertMsg(cc.set('69950-197').crp,'AC50-197') )</script>; &nbsp;&nbsp; 69999-999=<script>document.write( assertMsg(cc.set('69999-999').crp,'AC99-999') )</script></li>
@@ -68,7 +68,7 @@
 
 
 	<h2>Conversões CRP to CEP</h2>
-	A listagem abaixo foi gerada com  <code>php <a href="https://github.com/ppKrauss/CRP/blob/master/src/demo1.php">src/demo.php</a> 2</code>.
+	A listagem abaixo foi gerada com  <code>php <a href="https://github.com/OSMBrasil/CRP/blob/master/src/demo1.php">src/demo.php</a> 2</code>.
 	<ul>
 		<li>AC00-000=<script>document.write( assertMsg(cc.asCEP('AC00-000'),'69900-000') )</script>; &nbsp;&nbsp; AC49-865=<script>document.write( assertMsg(cc.asCEP('AC49-865'),'69949-865') )</script>; &nbsp;&nbsp; AC99-999=<script>document.write( assertMsg(cc.asCEP('AC99-999'),'69999-999') )</script></li>
 		<li>RR00-000=<script>document.write( assertMsg(cc.asCEP('RR00-000'),'69300-000') )</script>; &nbsp;&nbsp; RR50-025=<script>document.write( assertMsg(cc.asCEP('RR50-025'),'69350-025') )</script>; &nbsp;&nbsp; RR99-999=<script>document.write( assertMsg(cc.asCEP('RR99-999'),'69399-999') )</script></li>
