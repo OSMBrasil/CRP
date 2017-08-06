@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/75286601.svg)](https://zenodo.org/badge/latestdoi/75286601)
+
 # CRP - *C*ódigo de *R*oteamento *P*ostal
 (ver [_demonstração_ aqui](http://www.openstreetmap.com.br/CRP) e visualização de **dados [aqui](http://data.okfn.org/tools/view?url=https%3A%2F%2Fraw.githubusercontent.com%2FOSMBrasil%2FCRP%2Fmaster%2Fdatapackage.json)**)
 
