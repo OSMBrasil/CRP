@@ -1,4 +1,5 @@
-[![DOI](https://zenodo.org/badge/75286601.svg)](https://zenodo.org/badge/latestdoi/75286601)
+[![DOI](https://zenodo.org/badge/75286601.svg)](https://zenodo.org/badge/latestdoi/75286601) &nbsp; [![goodtables.io](https://goodtables.io/badge/github/OSMBrasil/CRP.svg)](https://goodtables.io/github/OSMBrasil/CRP)
+
 
 # CRP - *C*ódigo de *R*oteamento *P*ostal
 (ver [_demonstração_ aqui](http://www.openstreetmap.com.br/CRP) e visualização de **dados [aqui](http://data.okfn.org/tools/view?url=https%3A%2F%2Fraw.githubusercontent.com%2FOSMBrasil%2FCRP%2Fmaster%2Fdatapackage.json)**)
