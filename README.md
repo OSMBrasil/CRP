@@ -47,11 +47,11 @@ A única exceção à regra do "nome da UF no prefixo" seria São Paulo, que tem
 A tabela completa, baseada na [lista geral dos CEPs](https://en.wikipedia.org/wiki/List_of_postal_codes_in_Brazil#Eight-digit_form), está em **[CEP-to-CRP.csv](data/CEP-to-CRP.csv)**, e define com rigor todos os detalhes da conversão entre *strings* de CEP e CRP.  O script PHP [rgxGen.php](src/rgxGen.php) gera as [*regular expressions*](https://en.wikipedia.org/wiki/Regular_expression) adequadas ao algoritmo de conversão &mdash;  dois exemplos foram implementados, um  em Javascript, [convert.js](src/convert.js), usado no [demo](http://ppkrauss.github.io/CRP), e outro em  PHP no script [convert.php](src/convert.php).
 
 ## Notas sobre extensibilidade e compactação
-O formato CRM acima descrito também pode:
+O formato CRP acima descrito também pode:
 
-* ser estendido para uma segunda convenção OSM de "CEP de local sem CEP", ou seja, realizar um registro preliminar de CEP para locais tais como favelas, ocupação irregular e novos loteamentos. Convenções simples como concatenação  de uma letra podem ser usadas.
+* Ter seu código "reduzido" apenas à parte inteira (`CRP_int`), quando o contexto regional (ex. estado) for conhecido.
 
-* ter seu código compactado, reduzido apenas à parte inteira (`CRP_int`), quando o contexto de UF (ou zona metropolitana) for conhecido.
+* Ter seu código ampliado para designar subdivisões com demanda ainda não atendida. Estender o CRP conforme  uma convenção OpenStreetMap (OSM) de "CEP de local sem CEP": realizar um registro preliminar de sufixo-CRP (ex. adicionando-se uma letra aos demais dígitos) para locais tais como cidades com um só CEP, novos loteamentos, favelas e áreas de ocupação irregular.
 
 ## Notas sobre o ecossistema de CRPs
 Outros países do Mercosul, como a Argentina, já adotam um sistema de codificação postal que inclui a "subdivisão principal do país" como prefixo. A codificação em uma ou duas letras dos nomes das subdivisões do país,  por sua vez, é padronizada pela ISO&nbsp;3166-2 &mdash; ver por exemplo [ISO&nbsp;3166-2:AR](https://en.wikipedia.org/wiki/ISO_3166-2:BR) e [ISO&nbsp;3166-2:BR](https://en.wikipedia.org/wiki/ISO_3166-2:BR).
