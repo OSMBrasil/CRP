@@ -11,5 +11,3 @@ A proposta de revisão técnica do PAR-ID e de sua integração à rede de dados
 * [Algoritmo de conversão de nome para código de 3 letras](parId-cod3letras.md)
 * Codificação das vias
 * Numeração ao longo das vias e correção por marcos de referêcnia.
-
-Proposta vinculada: este sistema de endereçamento rural pode ser ventualmente expandido para endereçamento urbano e suplantar o CEP. A sua complementação com endereços urbanos poderia ser feita, em contextos onde o CEP já vinha sendo empregado, com o uso da numeração de CEP de via. O CRP ajudaria a designar e converter números, bem como a metodogia para batismo de novas vias.
