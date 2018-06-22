@@ -6,7 +6,7 @@ Este sistema de endereçamento rural que pode ser ventualmente expandido para en
 
 Sua meta é garantir acesso aos serviços públicos tais como ambulâncias, polícia, etc. bem como ajudar o morador rural a designar pontos de entrega e estabelecer digitalmente roteiros de entregas no espaço rural.
 
-![](assets/img/pepId-resumo1.png)
+![](assets/img/parId-resumo1.png)
 
 A proposta de revisão técnica do PAR-ID e de sua integração à rede de dados abertos, incluindo o OSM, dividida nas seguintes partes:
 
