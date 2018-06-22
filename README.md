@@ -72,6 +72,12 @@ CREATE TABLE crp (
 CREATE VIEW vw_crp AS 
   SELECT *, crp_format(uf,cod) AS crp, crp_asCEP(uf,cod) AS cep 
   FROM crp;
+
+-- para uso apenas na importação de dados:
+CREATE DOMAIN br_postal_crp AS text -- assegura syntaxe mínima
+CHECK(
+   VALUE ~* '^(BR\-?)?[A-EGMPRSTZ][ABCEFGIJLMNOPRST]\d{5,5}(\-?\d{3,3})?$'
+);
 ```
 
 No caso do PostgreSQL, que oferece nativamente o tratamento de [regular expressions](https://en.wikipedia.org/wiki/Regular_expression),  o código das  funções `crp_is_valid()`,  `crp_asCEP()` e `crp_format()` pode ser implementado em SQL,  [PL/pgSQL](https://www.postgresql.org/docs/9.5/static/plpgsql.html) ou adaptando diretamente os códigos deste projeto ([convert.js](src/convert.js) para [PLv8](https://github.com/plv8/plv8) ou [convert.php](src/convert.php) para [PL/PHP](https://www.postgresql.org/docs/9.5/static/external-pl.html)).
