@@ -17,6 +17,8 @@ Para contornar o problema, é até simples,
 
 A finalidade do presente projeto é  **estabelecer as convenções** para se transcrever a *string* de CEP no formato CRP, e demonstrar que a convenção é consistente, simples e reversível.
 
+PS: ver também [novas metas de 2018](docs/CRP-metas.md).
+
 # CONVENÇÃO DO CRP
 
 As convenções a seguir estão sendo submetidas à apreciação da comunidade de potenciais usuários.
