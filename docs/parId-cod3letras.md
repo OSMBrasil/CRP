@@ -116,10 +116,29 @@ A seguir apenas uma desecrição sumária dos principais filtros e métodos de r
 
 ### Formação do "grupo de elite"
 
-Nomes são também tradições. A cidade de São Carlos tem mais de 100 anos. Em 1900 era uma das 5 mais populosas, hoje está na 31º posição... Ainda assim manteve-se entre as 10% maiores. Essa "inércia" das cidades antigas permite-nos chutar melhor. O algoritmo portanto seria algo como:
+É uma decisão facultativa: obter siglas ótimas para certas cidades antes que as demais, por serem supostamente mais importantes, com nomes mais frequentemente utilizados.
+
+Nomes são também tradições. A cidade de São Carlos tem mais de 150 anos, o seu nome deve ser mais conhecido que nomes como Suzano, cidade ligeiramente maior porém com menos de 100 anos. Em 1900 São Carlos era uma das 5 mais populosas, hoje está na 31º posição... Ainda assim manteve-se entre as 10% maiores. População e idade, ligeiramente acoplados por essa "inércia" das cidades mais antigas, parecem ser bons critérios para priorizar um pequeno grupo de cidades supostamente mais importantes.  Outro parâmetro como área (correlacionado ao número de vias), facilmente estimado no OpenStreetMap, poderia ser também usado, a ideia aqui é apenas exemplificar.
+
+Cidade | Fundação | Habitantes
+-------| -------- | -------------
+São Paulo	|1554	|~12110000
+Guarulhos	|1560	|~1350000
+Campinas	|1774	|~1182000
+São Bernardo do Campo	|1553  	|~827000
+Santo André	|1553  	|~715000
+São José dos Campos	|1767  	|~703000
+...	|...	|...
+Limeira	|1826 	|~301000
+Suzano	|1949 	|~291000
+Taboão da Serra	|1959 	|~279600
+Sumaré	|1868 	|~273000
+...	|...	|...
+
+O algoritmo portanto seria algo como:
 
 1. Cidades com mais de *H×M* mil habitantes, resultando *n* cidades eleitas.
 
-2. Unior ao grupo as *n/3*  cidades  mais antigas entre aquelas com mais de <i>M×(H-1)</i> mil habitantes.
+2. Unir ao grupo as *n/3*  cidades  mais antigas entre aquelas com mais de <i>M×(H-1)</i> mil habitantes. <br/>Faz papel de suavização da "nota de corte" do critério anterior. 
 
 Por exemplo *M=100* e *H=5*, equivale a dizer grosseiramente que a "a nota de corte é 500 mil habitantes". Por volta de 10 cidades satisfarão o primeiro critério e outrs 3 cidades satisfarão o segundo.
