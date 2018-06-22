@@ -118,8 +118,8 @@ A seguir apenas uma desecrição sumária dos principais filtros e métodos de r
 
 Nomes são também tradições. A cidade de São Carlos tem mais de 100 anos. Em 1900 era uma das 5 mais populosas, hoje está na 31º posição... Ainda assim manteve-se entre as 10% maiores. Essa "inércia" das cidades antigas permite-nos chutar melhor. O algoritmo portanto seria algo como:
 
-1. Cidades com mais de *H*M* mil habitantes, resultando *n* cidades eleitas.
+1. Cidades com mais de *H×M* mil habitantes, resultando *n* cidades eleitas.
 
-2. Unior ao grupo as *n/3*  cidades  mais antigas entre aquelas com mais de <i>M*(H-1)</i> mil habitantes.
+2. Unior ao grupo as *n/3*  cidades  mais antigas entre aquelas com mais de <i>M×(H-1)</i> mil habitantes.
 
 Por exemplo *M=100* e *H=5*, equivale a dizer grosseiramente que a "a nota de corte é 500 mil habitantes". Por volta de 10 cidades satisfarão o primeiro critério e outrs 3 cidades satisfarão o segundo.
