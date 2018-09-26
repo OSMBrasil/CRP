@@ -52,6 +52,8 @@ A primeira manifestação pública e focada na questão parece ter sido iniciada
 
 No mesmo ano, uns meses depois, surgiu uma inusitada "chamada para o debate" em um site de perguntas e respostas técnicas, [pt.stackoverflow.com/54539](https://pt.stackoverflow.com/q/54539/4186), e a questão foi novamente debatida, desta vez com um enfoque mais orientado à demanda que poderia ser resumida como *"direito de publicar uma lista de números CEPs da cidade"*, que, assim como o direito de publicar nomes de rua, não admite direitos autorais, e o detentor de *direitos morais sobre a obra* (uma simples listagem de números), seria a Câmara Municipal, não uma empresa privada.
 
+Em 2016 foi [defendida uma tese](http://repositorio.unb.br/bitstream/10482/22921/1/2016_AnaMariadeAlmeiraRibeiro.pdf) onde diversos argumentos foram revisados, reforçando a fragilidade jurídica da defesa por direitos autorais no CEP. 
+
 Em 2018 foi esboçado um [primeiro rascunho para explicar o que seria um código mais moderno](http://openstreetmap.com.br/CLP) e capaz de substituir o CEP sem prolemas de direito autorial ou "autoridade central de batismo".
 
 <!--
