@@ -15,9 +15,9 @@ class CRPconvert {
 	public $debug    =true; // set to false for stop debuging!
 
 	/**
-   * Set context by CEP or CRP or prefix.
+	 * Set context by CEP or CRP or prefix.
 	 * @return 2 when CEP, 1 when CRP, NULL for error.
-   */
+	 */
 	private function setContext($x) {
 		$x = trim($x);
 		if (ctype_digit(substr($x,0,1)))
@@ -27,9 +27,9 @@ class CRPconvert {
 	}
 
 	/**
-   * Set CRP register by "contexted CRP" (CRP without prefix).
+	 * Set CRP register by "contexted CRP" (CRP without prefix).
 	 * @return 1 when sucess, NULL for error.
-   */
+	 */
 	function setPart($x) {
 		if (!preg_match('/^(\d{1,4})-?(\d{3,3})$/',$x,$m))
 			return $this->error(1,"valor '$x' incompleto ou inválido como uncontexted CRP.");
@@ -39,9 +39,9 @@ class CRPconvert {
 	}
 
 	/**
-   * Set CRP register by full CEP or CRP.
+	 * Set CRP register by full CEP or CRP.
 	 * @return 1 when sucess, NULL for error.
-   */
+	 */
 	function set($x) {
 		$ctx = $this->setContext($x); // 2 is CEP
 		if (!$ctx) return NULL;
@@ -50,8 +50,8 @@ class CRPconvert {
 	}
 
 	/**
-   * Reset $crp accumulator and related caches.
-   */
+	 * Reset $crp accumulator and related caches.
+	 */
 	function reset() {
 		$this->crp = $this->crp_int = $this->crp_uf = $this->crp_pref = NULL;
 	}
@@ -67,9 +67,9 @@ class CRPconvert {
 		);
 	}
 
-  /**
-   * Show as standard CRP.
-   */
+	/**
+	 * Show as standard CRP.
+	 */
 	function asCRP($cep=NULL,$compact=false) {
 		if ($cep) $this->setContextByCEP($cep);
 		return $this->compact($this->crp,$compact);
@@ -100,8 +100,8 @@ class CRPconvert {
 	}
 
 	/**
-   * get context of a CEP or CEP prefix.
-   */
+	 * get context of a CEP or CEP prefix.
+	 */
 	private function setContextByCEP($cep) { //
 		if (!$cep)
 		 	return $this->error(2,"CEP vazio");
@@ -119,8 +119,8 @@ class CRPconvert {
 	}
 
 	/**
-   * get context of a CRP or CRP prefix.
-   */
+	 * get context of a CRP or CRP prefix.
+	 */
 	private function setContextByCRP($crp) {
 		if (strlen($crp)<2)
 		 	return $this->error(4,"CRP vazio");
@@ -135,8 +135,8 @@ class CRPconvert {
 	}
 
 	/**
-   * Compact code (removes '-').
-   */
+	 * Compact code (removes '-').
+	 */
 	private function compact($x,$compact=false) {
 		return $compact? str_replace('-','',$x): $x;
   }
